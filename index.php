@@ -1,14 +1,8 @@
-<?php
-//$layout = 'content';
-//$layout = 'content-sidebar1';
-//tamatebako_set_layout( $layout );
-//tamatebako_set_template_dir( "content-grid", "content" );
-//tamatebako_add_body_class( array( "mobile-menu-active" ) );
-?>
-
 <?php get_header(); ?>
 
 <div id="container">
+
+	<?php tamatebako_skip_to_content(); ?>
 
 	<?php get_template_part( 'site-header' ); ?>
 
