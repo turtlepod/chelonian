@@ -1,30 +1,181 @@
 <?php
 /**
- *****************************************
+ ********************************************************************
  * TAMATEBAKO
- * ---------------------------------------
- * @author    David Chandra Purnama
- * @version   0.1.0
+ * ------------------------------------------------------------------
+ * @author    David Chandra Purnama <david@shellcreeper.com>
+ * @version   1.0.1
  * @copyright Genbu Media
  * @link      http://shellcreeper.com
- *****************************************
- * TABLE OF CONTENTS:
+ * @link      http://genbu.me
+ * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  * 
- * #01 - LOAD HYBRID CORE
- * #02 - CONTENT
+ ********************************************************************
+ * ABOUT
+ * ------------------------------------------------------------------
+ * 
+ * Tamatebako is drop-in code (framework/library) to build theme.
+ * A collection of functions, filters, and files,
+ * to easily build theme using Hybrid Core Theme Framework. 
+ * The main purpose is to provide most used functions and
+ * template functions to allow developer and designer 
+ * to get back to what matters the most:
+ * developing and designing themes.
+ * 
+ ********************************************************************
+ * USAGE
+ * ------------------------------------------------------------------
+ * 
+ * "tamatebako.php" should be added and loaded in "includes" folder,
+ * "string.php" also need to exist, with function "tamatebako_string()".
+ * "tamatebako_string()" function is simple array for translation string
+ * used in tamatebako.
+ * theme author should not modify "tamatebako.php" but can modify
+ * "tamatebako_string()" function translation string content.
+ * Hybrid Core need to be loaded in "library" folder.
+ * Tamatebako also load and/or register and/or enqueue scripts and style
+ * when the file is available in theme.
+ * 
+ ********************************************************************
+ * ASSET FILES
+ * ------------------------------------------------------------------
+ * 
+ * These assets files is managed/used by Tamatebako,
+ * but theme can change it as needed just by removing the files not used.
+ * Some files are loaded by default, but Tamatebako will check
+ * if file exist before register, enqueue, or load.
+ * 
+ * CSS:
+ * located in theme "css" folder, except for "media-queries".
+ * Theme can enqueue it using "hybrid-core-styles" theme support.
+ * Other main stylesheet such as "style.css" managed by Hybrid Core library.
+ * - "media-queries"
+ *   file: media-queries.css, media-queries.min.css
+ *   this file located in main/root of theme dir.
+ * - "theme-reset"
+ *   file: reset.css, reset.min.css
+ *   not really a reset, but a base stylesheet including wp-editor fix
+ *   and gallery
+ * - "theme-menus"
+ *   file: menus.css, menus.min.css
+ *   drop down menu with search
+ * - "theme-flexslider"
+ *   file: flexslider.css (including fonts)
+ *   base css for flexslider by woothemes.
+ * - "debug-media-queries"
+ *   file: debug-media-queries.css
+ *   to display break points, need to be loaded using
+ *   "tamatebako-debug" theme support.
+ * 
+ * CSS(manual):
+ * located in theme "css" folder.
+ * stylesheet loaded not using enqueue but added directly in template
+ * using "wp_head" hook.
+ * - ie8.css, ie8.min.css
+ *   if exist, only loaded if browser is Internet Explorer 8.
+ *   theme can add this css file to add browser support for IE8 visitor.
+ * - ie9.css, ie9.min.css
+ *   if exist, only loaded if browser is Internet Explorer 9.
+ *   theme can add this css file to add browser support for IE9 visitor.
+ * 
+ * JS:
+ * located in theme "js" folder
+ * - "theme-fitvids"
+ *   file: fitvids.js, fitvids.min.js
+ *   for responsive video embed, enqueued by default
+ * - "theme-flexslider"
+ *   file: flexslider.js, flexslider.min.js
+ *   not enqueued but registered if exist,
+ *   theme should only enqueue if using slider.
+ * - "theme-js"
+ *   theme main stylesheet, theme can use this to add custom
+ *   javascript or settings for other script.
+ *   this file is enqueued by default if exist.
+ * 
+ * JS (manual):
+ * located in theme "js" folder
+ * javascript loaded not using enqueue but added directly in template.
+ * - html5shiv.js, html5shiv.min.js
+ *   To enable HTML 5 in unsupported browser.
+ *   loaded via "wp_head" hook if file exist.
+ * - respond.js, respond.min.js
+ *   To Enable media queires in unsupported browser.
+ *   loaded via "wp_head" hook if file exist.
+ * - js-status.js
+ *   to check if the javascript is enabled by switching body class
+ *   from "no-js" to "js"
+ *   this added after opening <body> tag, using template function
+ *   "tamatebako_check_js_script()"
+ * 
+ ********************************************************************
+ * TABLE OF CONTENTS
+ * ------------------------------------------------------------------
+ * 
+ * #01 - HELPER FUNTIONS
+ *       Helper functions used in Tamatebako.
+ * 
+ * #02 - LOAD HYBRID CORE
+ *       Load Hybrid Core Library and set framework's defaults.
+ *
  * #03 - SETUP
- * #04 - SET DEFAULTS
- * #05 - SCRIPTS AND STYLE
- * #06 - CONTEXT
- * #07 - TEMPLATE FUNCTIONS
- * #08 - UTILLITY
- * #09 - REGISTER THEME SUPPORT
- * #10 - DEBUG
+ *       General Theme Setup.
+ *
+ * #04 - SCRIPTS AND STYLES
+ *       Register and Enqueue Scripts.
+ *
+ * #05 - CONTEXTS
+ *       Additional Classes.
+ *
+ * #06 - TEMPLATE FUNCTIONS
+ *       Functions used in templates.
+ *
+ * #07 - UTILLITY FUNTIONS
+ *       Anon Functions (php 5.3) for easier development.
  * 
+ * #08 - REGISTER THEME SUPPORT
+ *       Several theme support for faster development.
+ *
+ * #09 - DEBUG
+ *       Helper for easier theme debug.
+ *
+ ********************************************************************
+ * LICENSE
+ * ------------------------------------------------------------------
+ * 
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as 
+ * published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of 
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the
+ * Free Software Foundation, Inc.,
+ * 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ * 
+*********************************************************************/
+
+
+
+/* #01 - HELPER FUNTIONS
 ******************************************/
 
+/**
+ * Helper function to get theme version
+ * This function is to properly add version number to scripts and styles.
+ * 
+ * @since 0.1.0
+ */
+function tamatebako_theme_version(){
+	$theme = wp_get_theme( get_template() );
+	return $theme->get( 'Version' );
+}
 
-/* #01 - LOAD HYBRID CORE
+
+/* #02 - LOAD HYBRID CORE
 ******************************************/
 
 
@@ -33,165 +184,182 @@ require_once( trailingslashit( get_template_directory() ) . 'library/hybrid.php'
 new Hybrid();
 
 
-/* #02 - SETUP
-******************************************/
+/* Load theme framework setup */
+add_action( 'after_setup_theme', 'tamatebako_hybrid_core_setup', 5 );
 
-
-/* Load theme general setup */
-add_action( 'after_setup_theme', 'tamatebako_setup', 5 );
 
 /**
- * General Setup
+ * Hybrid Core Library Setup
+ * - Load HC "Template Hierarchy"
+ * - Load "Get the Image" script
+ * - Load "Loop Pagination" script
+ * - Set Document Title
+ * - Change Infinity Simbol to include comment.
+ * 
  * @since 0.1.0
  */
-function tamatebako_setup(){
+function tamatebako_hybrid_core_setup(){
 
-	/* Automatically add feed links to <head>. */
-	add_theme_support( 'automatic-feed-links' );
-
-	/* Hybrid Core */
+	/* Activate Hybrid Core */
 	add_theme_support( 'hybrid-core-template-hierarchy' );
 	add_theme_support( 'get-the-image' );
 	add_theme_support( 'loop-pagination' );
 
-	/* Set Consistent Read More */
-	add_filter( 'excerpt_more', 'tamatebako_disable_excerpt_more' );
-	add_filter( 'the_excerpt', 'tamatebako_add_excerpt_more' );
-	add_filter( 'the_content_more_link', 'tamatebako_content_more', 10, 2 );
+	/* Modify Defaults "wp_title" */
+	remove_action( 'wp_head', 'hybrid_doctitle', 0 );
+	add_action( 'wp_head', 'tamatebako_doctitle', 0 );
+	remove_filter( 'wp_title', 'hybrid_wp_title', 1 );
+	add_filter( 'wp_title', 'tamatebako_wp_title', 1 );
 
-	/* Edit Link */
-	add_filter( 'edit_post_link', 'tamatebako_edit_post_link', 10, 2 );
-	add_filter( 'edit_comment_link', 'tamatebako_edit_comment_link', 10, 2 );
-
-	/* WP Link Pages */
-	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
-
-	/* Sidebar Defaults Args */
-	add_filter( 'hybrid_sidebar_defaults', 'tamatebako_sidebar_defaults' );
-
-	/* Script */
-	add_action( 'wp_head', 'tamatebako_head_script' );
-	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
-	add_action( 'wp_enqueue_scripts', 'tamatebako_register_css', 1 );
-
-	/* Admin: TinyMCE Editor Style */
-	add_filter( 'tiny_mce_before_init', 'tamatebako_tinymce_body_class' );
-
-	/* Additional Body Classes */
-	add_filter( 'body_class', 'tamatebako_body_class' );
-
-	/* Additional Widgets Classes */
-	add_filter( 'dynamic_sidebar_params', 'tamatebako_widget_class' );
-
-	/* HTML 5 */
-	$html5 = array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption'
-	);
-	add_theme_support( 'html5', $html5 );
+	/* Post Formats */
+	add_filter( 'hybrid_aside_infinity', 'tamatebako_aside_infinity' );
 }
 
 
-/* #03 - CONTENT
-******************************************/
-
 /**
- * Disable / Remove Auto Excerpt More
+ * Add Title Tag
+ * This title tag is added to "wp_head" hook to replace "hybrid_doctitle()".
+ *
  * @since 0.1.0
  */
-function tamatebako_disable_excerpt_more( $more ) {
-	return '&hellip;';
+function tamatebako_doctitle(){ ?>
+<title><?php wp_title( '' ); ?></title>
+<?php
 }
 
+
 /**
- * Add Excerpt More In All Excerpt
+ * Filter Default WP Title Tag
+ * Modified from Hybrid Core Library.
+ *
  * @since 0.1.0
  */
-function tamatebako_add_excerpt_more( $excerpt ) {
-	$string = tamatebako_string( 'read-more' );
-	if ( !empty( $string ) ){
-		return $excerpt . '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span>' . $string . '</span></a></span>';
+function tamatebako_wp_title( $doctitle ){
+
+	/* Variable */
+	$site_title = get_bloginfo( 'name' );
+	$site_description = get_bloginfo( 'description', 'display' );
+
+	if ( is_front_page() ){
+		$doctitle = $site_title;
 	}
-	return $excerpt;
+
+	elseif ( is_home() ){
+		$doctitle = single_post_title( '', false );
+	}
+
+	elseif ( is_singular() ){
+		$doctitle = single_post_title( '', false );
+	}
+
+	elseif ( is_category() ){
+		$doctitle = single_cat_title( '', false );
+	}
+
+	elseif ( is_tag() ){
+		$doctitle = single_tag_title( '', false );
+	}
+
+	elseif ( is_tax() ){
+		$doctitle = single_term_title( '', false );
+	}
+
+	elseif ( is_post_type_archive() ){
+		$doctitle = post_type_archive_title( '', false );
+	}
+
+	elseif ( is_author() ){
+		$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+	}
+
+	elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ){
+		$doctitle = hybrid_single_minute_hour_title( '', false );
+	}
+
+	elseif ( get_query_var( 'minute' ) ){
+		$doctitle = hybrid_single_minute_title( '', false );
+	}
+
+	elseif ( get_query_var( 'hour' ) ){
+		$doctitle = hybrid_single_hour_title( '', false );
+	}
+
+	elseif ( is_day() ){
+		$doctitle = hybrid_single_day_title( '', false );
+	}
+
+	elseif ( get_query_var( 'w' ) ){
+		$doctitle = hybrid_single_week_title( '', false );
+	}
+
+	elseif ( is_month() ){
+		$doctitle = single_month_title( ' ', false );
+	}
+
+	elseif ( is_year() ){
+		$doctitle = hybrid_single_year_title( '', false );
+	}
+
+	elseif ( is_archive() ){
+		$doctitle = hybrid_single_archive_title( '', false );
+	}
+
+	elseif ( is_search() ){
+		$doctitle = hybrid_search_title( '', false );
+	}
+
+	elseif ( is_404() ){
+		$doctitle = hybrid_404_title( '', false );
+	}
+
+	/* Add Site Description only in front page */
+	if( is_front_page() ){
+		if ( $site_description ){
+			$doctitle = "{$doctitle}: {$site_description}";
+		}
+	}
+	/* Add Site Title in other pages, for branding and bookmark purpose */
+	else{
+		$doctitle = "{$doctitle} &ndash; {$site_title}";
+	}
+
+	/* If the current page is a paged. */
+	if ( ( ( $page = get_query_var( 'paged' ) ) || ( $page = get_query_var( 'page' ) ) ) && $page > 1 ){
+		$page = number_format_i18n( absint( $page ) );
+		$doctitle = sprintf( tamatebako_string( 'paged' ), $doctitle . " | ", $page );
+	}
+
+	return trim( strip_tags( $doctitle ) );
 }
+
 
 /**
- * Content More
+ * Post Format Aside Infinity Symbol
+ * and use comments link when available.
+ * Taken from Stargazer theme
+ *
+ * @author Justin Tadlock <justin@justintadlock.com>
+ * @link http://themehybrid.com/themes/stargazer
  * @since 0.1.0
  */
-function tamatebako_content_more( $more_link, $more_link_text ){
-	$string = tamatebako_string( 'read-more' );
-	if ( !empty( $string ) ){
-		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span>' . tamatebako_string( 'read-more' ) . '</span>', $more_link ) . '</span>';
+function tamatebako_aside_infinity( $html ){
+	if ( have_comments() || comments_open() ){
+		$html = ' <a class="comments-link" href="' . get_permalink() . '">' . number_format_i18n( get_comments_number() ) . '</a>';
 	}
-	return $more_link;
+	return $html;
 }
 
-/**
- * Edit Post Link
- * @since 0.1.0
- */
-function tamatebako_edit_post_link( $link, $post_id ){
-	$string = tamatebako_string( 'edit' );
-	if ( empty( $string ) ){
-		return $link;
-	}
-	if ( 'Edit This' == strip_tags( $link ) ){
-		$link = '<a class="post-edit-link" href="' . get_edit_post_link( $post_id ) . '">' . $string . '</a>';
-	}
-	return $link;
-}
-
-/**
- * Edit Post Link
- * @since 0.1.0
- */
-function tamatebako_edit_comment_link( $link, $comment_id ){
-	$string = tamatebako_string( 'edit' );
-	if ( empty( $string ) ){
-		return $link;
-	}
-	if ( 'Edit This' == strip_tags( $link ) ){
-		$link = '<a class="comment-edit-link" href="' . get_edit_comment_link( $comment_id ) . '">' . $string . '</a>';
-	}
-	return $link;
-}
-
-/**
- * WP Link Pages
- * @since 0.1.0
- */
-function tamatebako_wp_link_pages( $args ){
-	$args['before'] = '<p class="wp-link-pages">';
-	$args['after'] = '</p>';
-	return $args;
-}
-
-
-/* #04 - SET DEFAULTS
-******************************************/
-
-
-/**
- * Filter Register Sidebar Args in Hybrid Core
- * @since 0.1.0
- */
-function tamatebako_sidebar_defaults( $args ){
-	$args['before_title'] = '<div class="widget-title">';
-	$args['after_title'] = '</div>';
-	return $args;
-}
 
 /* Override theme layout customize */
 add_action( 'after_setup_theme', 'tamatebako_override_theme_layouts_customize_setup', 14 );
 
+
 /**
  * Override Theme Layouts Customize and fix theme layout post meta.
+ * - Set "Theme Layouts" to use "refresh".
+ * - Set "Theme Layouts" to ignore post meta when not defined.
  * 
- * @since 0.2.0
+ * @since 0.1.0
  */
 function tamatebako_override_theme_layouts_customize_setup(){
 
@@ -212,13 +380,16 @@ function tamatebako_override_theme_layouts_customize_setup(){
 	}
 }
 
+
 /**
  * Theme Layouts Customize Register
  * Modified from Hybrid Core Theme Layouts Ext. Customizer.
+ * This function/filter might be removed when this option is available in Hybrid Core
  *
+ * @link https://github.com/justintadlock/hybrid-core/issues/68
  * @author Justin Tadlock <justin@justintadlock.com>
  * @author Sami Keijonen <sami.keijonen@foxnet.fi>
- * @since 0.2.0
+ * @since 0.1.0
  */
 function tamatebako_theme_layouts_customize_register( $wp_customize ){
 
@@ -275,9 +446,13 @@ function tamatebako_theme_layouts_customize_register( $wp_customize ){
 	}
 }
 
+
 /**
  * Post Layout Filter.
  * Problem: If in the future post meta is disabled, user cannot change post layout already set.
+ * This function/filter might be removed when this option available in Hybrid Core.
+ *
+ * @link https://github.com/justintadlock/hybrid-core/issues/67
  * @since 0.1.0
  */
 function tamatebako_filter_layout( $theme_layout ){
@@ -317,22 +492,119 @@ function tamatebako_filter_layout( $theme_layout ){
 }
 
 
-/* #05 - SCRIPTS AND STYLE
+/* #03 - SETUP
 ******************************************/
 
 
+/* Load theme general setup */
+add_action( 'after_setup_theme', 'tamatebako_general_setup', 5 );
+
+
 /**
- * Get Theme Version
- * Helper function
+ * General Setup
+ * - Automatic feed links
+ * - Set consistent read more.
+ * - Add class for "wp_link_pages()"
+ *
  * @since 0.1.0
  */
-function tamatebako_theme_version(){
-	$theme = wp_get_theme( get_template() );
-	return $theme->get( 'Version' );
+function tamatebako_general_setup(){
+
+	/* Automatically add feed links to <head>. */
+	add_theme_support( 'automatic-feed-links' );
+
+	/* HTML 5 */
+	$html5 = array(
+		'search-form',
+		'comment-form',
+		'comment-list',
+		'gallery',
+		'caption'
+	);
+	add_theme_support( 'html5', $html5 );
+
+	/* Set Consistent Read More */
+	add_filter( 'excerpt_more', 'tamatebako_excerpt_more' );
+	add_filter( 'the_content_more_link', 'tamatebako_content_more', 10, 2 );
+
+	/* WP Link Pages */
+	add_filter( 'wp_link_pages_args', 'tamatebako_wp_link_pages' );
+
+}
+
+
+/**
+ * Default Excerpt More
+ * to add more link to excerpt add template function "tamatebako_read_more()" after "the_excerpt()"
+ * 
+ * @since 0.1.0
+ */
+function tamatebako_excerpt_more( $more ) {
+	return " &hellip; ";
+}
+
+
+/**
+ * Content More
+ * use the same markup as "tamatebako_read_more()" template function.
+ *
+ * @since 0.1.0
+ */
+function tamatebako_content_more( $more_link, $more_link_text ){
+	$string = tamatebako_string( 'read-more' );
+	if ( !empty( $string ) ){
+		return '<span class="more-link-wrap">' . str_replace( $more_link_text, '<span class="more-text">' . tamatebako_string( 'read-more' ) . '</span> <span class="screen-reader-text">' . get_the_title() . '</span>', $more_link ) . '</span>';
+	}
+	return $more_link;
 }
 
 /**
+ * WP Link Pages
+ * Add class to paragraph tag for easier styling.
+ *
+ * @since 0.1.0
+ */
+function tamatebako_wp_link_pages( $args ){
+	$args['before'] = '<p class="wp-link-pages">';
+	$args['after'] = '</p>';
+	return $args;
+}
+
+
+
+/* #04 - SCRIPTS AND STYLES
+******************************************/
+
+
+/* Load theme scripts setup */
+add_action( 'after_setup_theme', 'tamatebako_scripts_setup', 5 );
+
+
+/**
+ * Scripts Setup
+ * Enqueue and Register Scripts and Style.
+ *
+ * @since 0.1.0
+ */
+function tamatebako_scripts_setup(){
+
+	/* Head Script */
+	add_action( 'wp_head', 'tamatebako_head_script' );
+
+	/* JS */
+	add_action( 'wp_enqueue_scripts', 'tamatebako_register_js' );
+	add_action( 'wp_enqueue_scripts', 'tamatebako_enqueue_js' );
+
+	/* CSS */
+	add_action( 'wp_enqueue_scripts', 'tamatebako_register_css', 1 );
+
+}
+
+
+/**
  * Google Font Open Sans URL
+ * return clean and ready to use google open sans font url
+ * 
  * @since 0.1.0
  */
 function tamatebako_google_open_sans_font_url(){
@@ -340,14 +612,18 @@ function tamatebako_google_open_sans_font_url(){
 	return $font_url;
 }
 
+
 /**
  * Google Font Merriweather URL
+ * return clean and ready to use google merriweather font url
+ *
  * @since 0.1.0
  */
 function tamatebako_google_merriweather_font_url(){
 	$font_url = add_query_arg( 'family', urlencode( 'Merriweather:400,300italic,300,400italic,700,700italic,900,900italic' ), "//fonts.googleapis.com/css" );
 	return $font_url;
 }
+
 
 /**
  * Head Script.
@@ -387,8 +663,24 @@ function tamatebako_head_script() {
 <?php
 }
 
+
 /**
- * Register and Enqueue JS
+ * Register JS
+ * @since 0.1.0
+ */
+function tamatebako_register_js(){
+	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+	$flexslider_js = hybrid_locate_theme_file( array( "js/flexslider{$suffix}.js", "js/flexslider.js" ) );
+
+	if ( !empty( $flexslider_js ) ){
+		wp_register_script( 'theme-flexslider', $flexslider_js, array( 'jquery' ), '2.2.2', true );
+	}
+}
+
+
+/**
+ * Enqueue JS
+ * Register and Enqueue Scripts
  * @since 0.1.0
  */
 function tamatebako_enqueue_js(){
@@ -396,65 +688,109 @@ function tamatebako_enqueue_js(){
 	$fitvids_js = hybrid_locate_theme_file( array( "js/fitvids{$suffix}.js", "js/fitvids.css" ) );
 	$theme_js = hybrid_locate_theme_file( array( "js/theme{$suffix}.js", "js/theme.js" ) );
 
-	if ( !empty( $fitvids_js ) ) wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
-	if ( !empty( $theme_js ) ) wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
+	if ( !empty( $fitvids_js ) ){
+		wp_enqueue_script( 'theme-fitvids', $fitvids_js, array( 'jquery' ), '0.1.1', true );
+	}
+
+	if ( !empty( $theme_js ) ){
+		wp_enqueue_script( 'theme-js', $theme_js, array( 'jquery' ), tamatebako_theme_version(), true );
+	}
 }
 
-/**
- * Check JS Status
- * Modify no-js to js in body class.
- * @since 0.1.0
- */
-function tamatebako_check_js_script(){
-	$js_status = hybrid_locate_theme_file( array( "js/js-status.js" ) );
-	$script = '';
-	if( !empty( $js_status ) ) {
-		$script = '<script src="' . $js_status . '" type="text/javascript"></script>';
-	}
-	return apply_filters( 'tamatebako_check_js_script', $script );
-}
 
 /**
  * Register CSS
+ * Stylesheet can be loaded using 'hybrid-core-styles' theme support
  * @since 0.1.0
  */
 function tamatebako_register_css(){
 
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.js", "media-queries.css" ) );
 
 	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
 	wp_register_style( 'theme-open-sans-font', tamatebako_google_open_sans_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Google Fonts: Open Sans / font-family: 'Open Sans', sans-serif; */
+	/* Google Fonts: Open Sans / font-family: 'Merriweather', serif; */
 	wp_register_style( 'theme-merriweather-font', tamatebako_google_merriweather_font_url(), array(), tamatebako_theme_version(), 'all' );
 
-	/* Media Queries */
-	wp_register_style( 'media-queries',$media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	/* Flexslider */
+	$flexslider_css = hybrid_locate_theme_file( array( "css/flexslider{$suffix}.css", "css/flexslider.css" ) );
+	if ( !empty( $flexslider_css ) ){
+		wp_register_style( 'theme-flexslider', $flexslider_css, array(), '2.2.2', 'all' );
+	}
+
+	/* Media Queries CSS */
+	$media_queries_css = hybrid_locate_theme_file( array( "media-queries{$suffix}.css", "media-queries.css" ) );
+	if ( !empty( $media_queries_css ) ){
+		wp_register_style( 'media-queries', $media_queries_css, array(), tamatebako_theme_version(), 'all' );
+	}
+
+	/* Reset CSS */
+	$reset_css = hybrid_locate_theme_file( array( "css/reset{$suffix}.css", "css/reset.css" ) );
+	if ( !empty( $reset_css ) ){
+		wp_register_style( 'theme-reset', $reset_css, array(), tamatebako_theme_version(), 'all' );
+	}
+
+	/* Menus CSS */
+	$menus_css = hybrid_locate_theme_file( array( "css/menus{$suffix}.css", "css/menus.css" ) );
+	if ( !empty( $menus_css ) ){
+		wp_register_style( 'theme-menus', $menus_css, array(), tamatebako_theme_version(), 'all' );
+	}
 }
 
 
-/* #06 - CONTEXT
+/* #05 - CONTEXTS
 ******************************************/
+
+
+/* Load theme contexts setup */
+add_action( 'after_setup_theme', 'tamatebako_contexts_setup', 5 );
+
+
+/**
+ * Contexts Setup
+ * Additional classes for easier styling.
+ *
+ * @since 0.1.0
+ */
+function tamatebako_contexts_setup(){
+
+	/* Admin: TinyMCE Editor Style */
+	add_filter( 'tiny_mce_before_init', 'tamatebako_tinymce_body_class' );
+
+	/* Additional Body Classes */
+	add_filter( 'body_class', 'tamatebako_body_class' );
+
+	/* Additional Post Classes */
+	add_filter( 'post_class', 'tamatebako_post_class' );
+
+	/* Additional Widgets Classes */
+	add_filter( 'dynamic_sidebar_params', 'tamatebako_widget_class' );
+
+}
 
 
 /**
  * Add TinyMCE Body Class
+ * Add "entry-content" in editor style, to use main style.css as editor style.
+ * need to consider this when styling '<body>' and '<div class"entry-content">'.
+ *
  * @since  0.1.0
  */
 function tamatebako_tinymce_body_class( $settings ){
-	$classes = $settings['body_class'];
-	$settings['body_class'] = $classes . ' entry-content';
+	$settings['body_class'] = $settings['body_class'] . ' entry-content';
 	return $settings;
 }
 
+
 /**
- * Add Body Class
+ * Additional Body Class
+ *
  * @since 0.1.0
  */
 function tamatebako_body_class( $classes ){
 
-	/* JS Status */
+	/* JS Status, need to be changed to "js" when js available */
 	$classes[] = 'no-js';
 
 	/* Get all registered sidebars */
@@ -532,6 +868,28 @@ function tamatebako_body_class( $classes ){
 	return $classes;
 }
 
+
+/**
+ * Add Post Class
+ *
+ * @since 0.1.0
+ */
+function tamatebako_post_class( $classes ){
+
+	/* Post formats */
+	if ( post_type_supports( get_post_type(), 'post-formats' ) ) {
+		if ( get_post_format() ){
+			$classes[] = 'has-format';
+		}
+	}
+
+	/* Make it unique */
+	$classes = array_unique( $classes );
+
+	return $classes;
+}
+
+
 /**
  * Widget Class
  * @since 0.1.0
@@ -539,7 +897,7 @@ function tamatebako_body_class( $classes ){
 function tamatebako_widget_class( $params ) {
 
 	/* Global a counter array */
-	global $shell_widget_num;
+	global $tamatebako_widget_num;
 
 	/* Get the id for the current sidebar we're processing */
 	$this_id = $params[0]['id'];
@@ -548,8 +906,8 @@ function tamatebako_widget_class( $params ) {
 	$arr_registered_widgets = wp_get_sidebars_widgets();
 
 	/* If the counter array doesn't exist, create it */
-	if ( !$shell_widget_num ) {
-		$shell_widget_num = array();
+	if ( !$tamatebako_widget_num ) {
+		$tamatebako_widget_num = array();
 	}
 
 	/* if current sidebar has no widget, return. */
@@ -558,23 +916,23 @@ function tamatebako_widget_class( $params ) {
 	}
 
 	/* See if the counter array has an entry for this sidebar */
-	if ( isset( $shell_widget_num[$this_id] ) ) {
-		$shell_widget_num[$this_id] ++;
+	if ( isset( $tamatebako_widget_num[$this_id] ) ) {
+		$tamatebako_widget_num[$this_id] ++;
 	}
 	/* If not, create it starting with 1 */
 	else {
-		$shell_widget_num[$this_id] = 1;
+		$tamatebako_widget_num[$this_id] = 1;
 	}
 
 	/* Add a widget number class for additional styling options */
-	$class = 'class="widget widget-' . $shell_widget_num[$this_id] . ' '; 
+	$class = 'class="widget widget-' . $tamatebako_widget_num[$this_id] . ' '; 
 
 	/* in first widget, add 'widget-first' class */
-	if ( $shell_widget_num[$this_id] == 1 ) {
+	if ( $tamatebako_widget_num[$this_id] == 1 ) {
 		$class .= 'widget-first ';
 	}
 	/* in last widget, add 'widget-last' class */
-	elseif( $shell_widget_num[$this_id] == count( $arr_registered_widgets[$this_id] ) ) { 
+	elseif( $tamatebako_widget_num[$this_id] == count( $arr_registered_widgets[$this_id] ) ) { 
 		$class .= 'widget-last ';
 	}
 
@@ -585,12 +943,74 @@ function tamatebako_widget_class( $params ) {
 }
 
 
-/* #07 - TEMPLATE FUNCTIONS
+/* #06 - TEMPLATE FUNTIONS
 ******************************************/
+
+/**
+ * Check JS Status
+ * Script to modify "no-js" to "js" in body class.
+ * Need to be added after the opening "<body>" tag.
+ *
+ * @since 0.1.0
+ */
+function tamatebako_check_js_script(){
+	$js_status = hybrid_locate_theme_file( array( "js/js-status.js" ) );
+	$script = '';
+	if( !empty( $js_status ) ) {
+		$script = '<script src="' . $js_status . '" type="text/javascript"></script>';
+	}
+	return apply_filters( 'tamatebako_check_js_script', $script );
+}
+
+
+/**
+ * Skip to Content Link (accessibility)
+ * Better to be added before any content of the page.
+ * Commonly added after the opening '<div id="container">'
+ *
+ * @since 0.1.0
+ */
+function tamatebako_skip_to_content(){
+?>
+<div class="skip-link">
+	<a class="screen-reader-text" href="#content"><?php echo tamatebako_string( 'skip-to-content' ); ?></a>
+</div>
+<?php
+}
+
+
+/**
+ * Tamatebako Read More
+ * Can be added after "the_excerpt()"
+ * 
+ * @since 0.1.0
+ */
+function tamatebako_read_more() {
+	$string = tamatebako_string( 'read-more' );
+	$read_more = '';
+	if ( !empty( $string ) ){
+		$read_more = '<span class="more-link-wrap"><a class="more-link" href="' . get_permalink() . '"><span class="more-text">' . $string . '</span> <span class="screen-reader-text">' . get_the_title() . '</span></a></span>';
+	}
+	echo $read_more;
+}
+
+
+/**
+ * Entry Permalink
+ * General link to the post/entry.
+ *
+ * @since 0.1.0
+ */
+function tamatebako_entry_permalink(){
+?>
+<a class="entry-permalink" href="<?php the_permalink(); ?>" rel="bookmark" itemprop="url"><?php echo tamatebako_string( 'permalink' ); ?></a>
+<?php
+}
 
 
 /**
  * Loads a post content template based off the post type and/or the post format.
+ *
  * @since  0.1.0
  */
 function tamatebako_get_template( $dir ) {
@@ -621,18 +1041,30 @@ function tamatebako_get_template( $dir ) {
 	}
 
 	/* If the post type supports 'post-formats', get the template based on the format. */
-	if ( post_type_supports( $post_type, 'post-formats' ) ) {
+	if ( current_theme_supports( 'post-formats' ) && post_type_supports( $post_type, 'post-formats' ) ) {
 
-		/* Get the post format. */
-		$post_format = get_post_format() ? get_post_format() : 'standard';
+		/* Get theme post format support. */
+		$theme_support_format = get_theme_support( 'post-formats' );
 
-		/* Template based off post type and post format. */
-		$templates[] = "{$dir}/{$post_type}-{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_type}-{$post_format}.php";
+		/* Only if theme support specific format */
+		if ( is_array( $theme_support_format[0] ) ){
 
-		/* Template based off the post format. */
-		$templates[] = "{$dir}/{$post_format}{$singular}.php";
-		$templates[] = "{$dir}/{$post_format}.php";
+			/* Get the post format. */
+			$post_format = get_post_format() ? get_post_format() : 'standard';
+
+			if ( in_array( $post_format, $theme_support_format[0] ) ){
+
+				/* Template based off post type and post format. */
+				$templates[] = "{$dir}/{$post_type}-format-{$post_format}{$singular}.php";
+				$templates[] = "{$dir}/{$post_type}-format{$singular}.php";
+				$templates[] = "{$dir}/{$post_type}-format-{$post_format}.php";
+
+				/* Template based off the post format. */
+				$templates[] = "{$dir}/format-{$post_format}{$singular}.php";
+				$templates[] = "{$dir}/format{$singular}.php";
+				$templates[] = "{$dir}/format-{$post_format}.php";
+			}
+		}
 	}
 
 	/* Template based off the post type. */
@@ -650,9 +1082,11 @@ function tamatebako_get_template( $dir ) {
 	include( locate_template( $templates, false, false ) );
 }
 
+
 /**
  * Get custom menu name by location
  * Helper function to get menu location and use it as mobile toggle.
+ *
  * @link http://wordpress.stackexchange.com/questions/45700
  * @since 0.1.0
  */
@@ -684,6 +1118,7 @@ function tamatebako_get_menu_name( $location ){
 	return false;
 }
 
+
 /**
  * Check if menus is registered
  * @since 0.1.0
@@ -700,6 +1135,7 @@ function tamatebako_is_menu_registered( $location ){
 	return false;
 }
 
+
 /**
  * Menu Toggle
  * @since 0.1.0
@@ -714,6 +1150,7 @@ function tamatebako_menu_toggle( $location ){
 
 <?php
 }
+
 
 /**
  * Get Sidebar Name by ID
@@ -741,9 +1178,11 @@ function tamatebako_get_sidebar_name( $id ){
 	return false;
 }
 
+
 /**
- * Entry Meta
+ * Entry Terms
  * a helper function to print all taxonomy/term attach to a post.
+ *
  * @since 0.1.0
  */
 function tamatebako_entry_terms(){
@@ -768,15 +1207,17 @@ function tamatebako_entry_terms(){
 	if ( !empty( $entry_taxonomies ) ){ ?>
 		<div class="entry-meta">
 		<?php foreach ( $entry_taxonomies as $tax_id => $entry_tax ){ ?>
-			<?php hybrid_post_terms( array( 'taxonomy' => $tax_id, 'text' => $entry_tax['text'] . ' %s' ) ); ?>
+			<?php hybrid_post_terms( array( 'taxonomy' => $tax_id, 'text' => '<span class="term-name">' . $entry_tax['text'] . '</span>' . ' %s' ) ); ?>
 		<?php }//end foreach ?>
 		</div>
 
 	<?php } //end empty check
 }
 
+
 /**
  * Archive Title
+ *
  * @since 0.1.0
  */
 function tamatebako_archive_header(){ ?>
@@ -802,8 +1243,10 @@ function tamatebako_archive_header(){ ?>
 <?php
 }
 
+
 /**
  * Archive Footer (Pagination)
+ *
  * @since 0.1.0
  */
 function tamatebako_archive_footer(){ ?>
@@ -822,9 +1265,11 @@ function tamatebako_archive_footer(){ ?>
 <?php
 }
 
+
 /**
- * Primary Menu Fallback Callback
- * used in "menu/primary.php"
+ * Menu Fallback Callback
+ * Generic menu fallback and only display link to home page.
+ *
  * @since 0.1.0
  */
 function tamatebako_menu_fallback_cb(){
@@ -839,23 +1284,26 @@ function tamatebako_menu_fallback_cb(){
 <?php
 }
 
+
 /**
  * Navigation Search Form
- * used in "menu/primary.php"
- * @since 0.1.0.0
+ *
+ * @since 0.1.0
  */
 function tamatebako_menu_search_form( $id = 'search-menu' ){
 ?>
 <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
-	<label class="search-toggle" for="<?php echo esc_attr( $id ); ?>"></label>
+	<a href="#<?php echo esc_attr( $id ); ?>" class="search-toggle"><span class="screen-reader-text"><?php echo tamatebako_string('expand-search-form'); ?></span></a>
 	<input id="<?php echo esc_attr( $id ); ?>" type="search" class="search-field" placeholder="<?php echo tamatebako_string('search'); ?>" value="<?php if ( is_search() ) echo esc_attr( get_search_query() ); else ''; ?>" name="s"/>
-	<button class="search-submit button"><span><?php echo tamatebako_string('search-button'); ?></span></button>
+	<button class="search-submit button"><span class="screen-reader-text"><?php echo tamatebako_string('search-button'); ?></span></button>
 </form>
 <?php
 }
 
+
 /**
  * Next Previous Post (Loop Nav)
+ *
  * @since 0.1.0
  */
 function tamatebako_entry_nav(){
@@ -866,6 +1314,7 @@ function tamatebako_entry_nav(){
 </div><!-- .loop-nav -->
 <?php
 }
+
 
 /**
  * Content Error
@@ -890,6 +1339,7 @@ function tamatebako_content_error(){
 <?php
 }
 
+
 /**
  * Comments Nav
  * @since 0.1.0
@@ -912,12 +1362,16 @@ function tamatebako_comments_nav(){
 <?php
 }
 
+
 /**
  * Comments Error
  * used in "comments.php"
  * @since 0.1.0
  */
 function tamatebako_comments_error(){
+	if( is_page() ){
+		return false;
+	}
 ?>
 <?php if ( pings_open() && !comments_open() ) { ?>
 
@@ -935,8 +1389,9 @@ function tamatebako_comments_error(){
 <?php
 }
 
+
 /**
- * Attachment
+ * Display any tipe of Attachment
  * @since 0.1.0
  */
 function tamatebako_attachment(){
@@ -948,10 +1403,11 @@ function tamatebako_attachment(){
 	}
 }
 
+
 /**
- * Attachment Image
- * 
- * 
+ * Display Attachment Image with caption if available.
+ *
+ * @since 0.1.0
  */
 function tamatebako_attachment_image(){
 
@@ -973,7 +1429,7 @@ function tamatebako_attachment_image(){
 }
 
 
-/* #08 - UTILLITY
+/* #07 - UTILLITY
 ******************************************/
 
 
@@ -991,6 +1447,7 @@ function tamatebako_set_layout( $new_layout ){
 		add_filter( 'theme_mod_theme_layout', $filter_layout );
 	}
 }
+
 
 /**
  * Set Template Dir
@@ -1011,8 +1468,9 @@ function tamatebako_set_template_dir( $new_dir, $old_dir ){
 	}
 }
 
+
 /**
- * Add Body Class
+ * Add Body Classes
  * @param $new_classes array
  * @since 0.1.0
  */
@@ -1031,12 +1489,13 @@ function tamatebako_add_body_class( $new_classes ){
 }
 
 
-/* #09 - REGISTER THEME SUPPORT
+/* #08 - REGISTER THEME SUPPORT
 ******************************************/
 
 
 /* Hook to theme setup */
 add_action( 'after_setup_theme', 'tamatebako_register_theme_support', 20 );
+
 
 /**
  * Register Theme Elements
@@ -1056,6 +1515,7 @@ function tamatebako_register_theme_support(){
 		add_action( 'customize_controls_print_styles', 'tamatebako_customize_mobile_view_style' );
 	}
 }
+
 
 /**
  * Register Sidebars
@@ -1082,6 +1542,7 @@ function tamatebako_register_sidebars(){
 		);
 	}
 }
+
 
 /**
  * Register Menus
@@ -1140,6 +1601,7 @@ jQuery(document).ready(function ($) {
 <?php
 }
 
+
 /**
  * Add custom stylesheet to customizer
  * @since 0.1.0
@@ -1190,7 +1652,6 @@ function tamatebako_customize_mobile_view_style(){
 	margin:0 5px;
 	color:#777;
 	position:relative;
-	speak:none;
 	-webkit-font-smoothing:antialiased;
 	cursor:pointer;
 }
@@ -1220,8 +1681,9 @@ function tamatebako_customize_mobile_view_style(){
 }
 
 
-/* #10 - DEBUG
+/* #09 - DEBUG
 ******************************************/
+
 
 /* Hook to theme setup */
 add_action( 'after_setup_theme', 'tamatebako_theme_debug_setup', 20 );
@@ -1258,6 +1720,7 @@ function tamatebako_theme_debug_setup(){
 	}
 }
 
+
 /**
  * Debug Mobile Body Class
  * @since 0.1.0
@@ -1266,6 +1729,7 @@ function tamatebako_debug_mobile_body_class( $classes ){
 	$classes[] = 'wp-is-mobile';
 	return $classes;
 }
+
 
 /**
  * Debug No JS
@@ -1277,6 +1741,7 @@ function tamatebako_debug_no_js(){
 	}
 }
 
+
 /**
  * Enqueue Media Queries Debug CSS
  * @since 0.1.0
@@ -1285,9 +1750,11 @@ function tamatebako_debug_enqueue_media_queries(){
 	wp_enqueue_style( 'debug-media-queries', trailingslashit( get_template_directory_uri() ) . 'css/debug-media-queries.css', array(), tamatebako_theme_version(), 'all' );
 }
 
+
 /**
  * Pretty Debug Data
  * @link http://chrisbratlien.com/prettier-php-debug-messages-continued/
+ * @since 0.1.0
  */
 function tmdd( $obj, $label = '' ) {  
 
@@ -1330,3 +1797,7 @@ function tmdd( $obj, $label = '' ) {
 	</script>
 	<?php
 }
+
+
+/* Hook to override tamatebako setup hook. */
+do_action( 'tamatebako_after_setup' );

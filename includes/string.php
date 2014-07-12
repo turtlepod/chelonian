@@ -8,31 +8,41 @@ function tamatebako_string( $context ){
 	/* Open Sesame ! */
 	$text = array();
 
-	/* Read More */
-	$text['read-more'] = '';
+	/* Paged Title Tag
+	 * Translators: 1 is the page title and separator. 2 is the page number.
+	 * Example Output: "{post title} | Page {page number}"
+	 */
+	$text['paged'] = _x( '%1$s Page %2$s', 'paged title tag', 'chelonian' );
 
-	/* Edit Link */
-	$text['edit'] = _x( 'Edit', 'edit link', 'genbu' );
+	/* Skip to content (accessibility) */
+	$text['skip-to-content'] = _x( 'Skip to content', 'skip to content (accessibility)', 'chelonian' );
+
+	/* Read More */
+	$text['read-more'] = _x( 'Read more&hellip;', 'read more', 'chelonian' );
+
+	/* Entry Permalink */
+	$text['permalink'] = '';
 
 	/* Next, Previous */
-	$text['next'] = _x( 'Next', 'next in pagination and navigation', 'genbu' );
-	$text['previous'] = _x( 'Previous', 'previous in pagination and navigation', 'genbu' );
+	$text['next'] = _x( 'Next', 'next in pagination and navigation (accessibility)', 'chelonian' );
+	$text['previous'] = _x( 'Previous', 'previous in pagination and navigation (accessibility)', 'chelonian' );
 
 	/* Search */
-	$text['search'] = _x( 'Search&hellip;', 'search text', 'genbu' );
-	$text['search-button'] = _x( 'Search', 'search button', 'genbu' );
+	$text['search'] = '';
+	$text['search-button'] = '';
+	$text['expand-search-form'] = '';
 
 	/* Comments error */
-	$text['comments-closed-pings-open'] = _x( 'Comments are closed, but trackbacks and pingbacks are open.', 'comments notice', 'genbu' );
-	$text['comments-closed'] = _x( 'Comments are closed.', 'comments notice', 'genbu' );
+	$text['comments-closed-pings-open'] = _x( 'Comments are closed, but trackbacks and pingbacks are open.', 'comments notice', 'chelonian' );
+	$text['comments-closed'] = _x( 'Comments are closed.', 'comments notice', 'chelonian' );
 
 	/* Content error */
-	$text['error'] = _x( '404 Not Found', '404 title', 'genbu' );
-	$text['error-msg'] = _x( 'Apologies, but no entries were found.', '404 content', 'genbu' );
+	$text['error'] = _x( '404 Not Found', '404 title', 'chelonian' );
+	$text['error-msg'] = _x( 'Apologies, but no entries were found.', '404 content', 'chelonian' );
 
 	/* Theme Layout */
-	$text['global-layout'] = _x( 'Global Layout', 'theme layouts', 'genbu' );
-	$text['layout'] = _x( 'Layout', 'theme layouts', 'genbu' );
+	$text['global-layout'] = '';
+	$text['layout'] = '';
 
 	$text = apply_filters( 'tamatebako_string', $text );
 
@@ -55,16 +65,15 @@ function chelonian_string( $context ){
 	$text = array();
 
 	/* Register Menus */
-	$text['menu-primary-name'] = _x( 'Navigation', 'nav menu location', 'genbu' );
-	$text['menu-footer-name'] = _x( 'Footer Links', 'nav menu location', 'genbu' );
+	$text['menu-primary-name'] = _x( 'Navigation', 'nav menu location', 'chelonian' );
 
 	/* Register Sidebar */
-	$text['sidebar-primary-name'] = _x( 'Sidebar 1', 'sidebar name', 'genbu' );
+	$text['sidebar-primary-name'] = _x( 'Sidebar', 'sidebar name', 'chelonian' );
 
 	/* Read More + Comment Link */
-	$text['read-more'] = _x( 'Read more&hellip;', 'read more', 'genbu' );
-	$text['comment'] = _x( 'Comment', 'comment link', 'genbu' );
-	$text['comments'] = _x( 'Comments', 'comment link', 'genbu' );
+	$text['read-more'] = _x( 'Read more&hellip;', 'read more', 'chelonian' );
+	$text['comment'] = _x( 'Comment', 'comment link', 'chelonian' );
+	$text['comments'] = _x( 'Comments', 'comment link', 'chelonian' );
 
 	$text = apply_filters( 'chelonian_string', $text );
 
