@@ -1,7 +1,7 @@
 /**
  * Theme Name:  Chelonian
- * Theme URI:   http://shellcreeper.com/chelonian-wordpress-theme
- * Description: Simple Theme to Kickstart Your Project.
+ * Theme URI:   http://shellcreeper.com/portfolio/item/chelonian-wordpress-theme/
+ * Description: Bold theme with landing page template to kick-start your project.
  * Version:     0.1.1
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
@@ -347,9 +347,8 @@ body.wordpress{
 .loop-description{
 	background: #fff;
 	color: #444;
-	padding: 30px;
-	padding: 3rem;
-	padding-bottom: 0;
+	padding: 20px 30px 0 30px;
+	padding: 2rem 3rem 0 3rem;
 }
 .loop-description:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
@@ -358,8 +357,8 @@ body.wordpress{
 }
 /* 404 Error */
 #post-0{
-	margin-bottom: 30px;
-	margin-bottom: 3rem;
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
 }
 #post-0 .entry-title{
 	color: #fff;
@@ -376,9 +375,8 @@ body.wordpress{
 #post-0 .entry-content{
 	background: #fff;
 	color: #444;
-	padding: 30px;
-	padding: 3rem;
-	padding-bottom: 0;
+	padding: 20px 30px 0 30px;
+	padding: 2rem 3rem 0 3rem;
 }
 #post-0 .entry-content:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
@@ -571,7 +569,6 @@ span.comments-link a:hover{
 
 /* === COMMENTS === */
 #comments-template{
-	background: #fff;
 	margin-bottom: 30px;
 	margin-bottom: 3rem;
 }
@@ -580,6 +577,7 @@ span.comments-link a:hover{
 
 /* Comment Header + Nav */
 .comments-header{
+	background: #fff;
 }
 .comments-header:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
@@ -626,6 +624,7 @@ span.comments-link a:hover{
 #comments .comment-list{
 	list-style: none;
 	margin: 0;
+	background: #fff;
 }
 #comments .comment-list .children{
 	list-style: none;
@@ -748,14 +747,14 @@ span.comments-link a:hover{
 /* Respond Form */
 #respond{
 	border-bottom: 1px solid #ccc;
-	margin-top: -40px;
-	margin-top: -4rem;
 	background: #fff;
 }
 .comment-list #respond{
 	border-left: 1px solid #ccc;
 	margin-left: 20px;
 	margin-left: 2rem;
+	margin-top: -40px;
+	margin-top: -4rem;
 }
 #reply-title{
 	font-size: 1.2em;
@@ -836,7 +835,7 @@ span.comments-link a:hover{
 
 /* comments closed */
 .comments-closed{
-	background: #eee;
+	background: #fff;
 	padding: 20px;
 	padding: 2rem;
 	margin-bottom: 30px;

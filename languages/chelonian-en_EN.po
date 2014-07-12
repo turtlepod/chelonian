@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Chelonian WordPress Theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-12 10:12+0700\n"
+"POT-Creation-Date: 2014-07-12 10:52+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: David Chandra Purnama <david@shellcreeper.com>\n"
@@ -27,14 +27,9 @@ msgctxt "skip to content (accessibility)"
 msgid "Skip to content"
 msgstr ""
 
-#: string.php:21
-msgctxt "content read more"
-msgid "Continue reading"
-msgstr ""
-
-#: string.php:24
-msgctxt "entry permalink"
-msgid "Permalink"
+#: string.php:21 string.php:74
+msgctxt "read more"
+msgid "Read more&hellip;"
 msgstr ""
 
 #: string.php:27
@@ -45,21 +40,6 @@ msgstr ""
 #: string.php:28
 msgctxt "previous in pagination and navigation (accessibility)"
 msgid "Previous"
-msgstr ""
-
-#: string.php:31
-msgctxt "search text"
-msgid "Search&hellip;"
-msgstr ""
-
-#: string.php:32
-msgctxt "search button (accessibility)"
-msgid "Search"
-msgstr ""
-
-#: string.php:33
-msgctxt "expand search form button (accessibility)"
-msgid "Expand Search Form"
 msgstr ""
 
 #: string.php:36
@@ -82,42 +62,22 @@ msgctxt "404 content"
 msgid "Apologies, but no entries were found."
 msgstr ""
 
-#: string.php:44
-msgctxt "theme layouts"
-msgid "Global Layout"
-msgstr ""
-
-#: string.php:45
-msgctxt "theme layouts"
-msgid "Layout"
-msgstr ""
-
 #: string.php:68
 msgctxt "nav menu location"
 msgid "Navigation"
 msgstr ""
 
-#: string.php:69
-msgctxt "nav menu location"
-msgid "Footer Links"
-msgstr ""
-
-#: string.php:72
+#: string.php:71
 msgctxt "sidebar name"
-msgid "Sidebar 1"
+msgid "Sidebar"
 msgstr ""
 
 #: string.php:75
-msgctxt "read more"
-msgid "Read more&hellip;"
-msgstr ""
-
-#: string.php:76
 msgctxt "comment link"
 msgid "Comment"
 msgstr ""
 
-#: string.php:77
+#: string.php:76
 msgctxt "comment link"
 msgid "Comments"
 msgstr ""

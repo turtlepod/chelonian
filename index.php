@@ -12,8 +12,6 @@
 
 			<div class="main-wrap">
 
-				<?php //hybrid_get_sidebar( 'primary' ); ?>
-
 				<main <?php hybrid_attr( 'content' ); ?>>
 
 					<?php if ( have_posts() ){ /* Posts Found */ ?>
