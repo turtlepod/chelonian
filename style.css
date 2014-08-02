@@ -2,7 +2,7 @@
  * Theme Name:  Chelonian
  * Theme URI:   http://shellcreeper.com/portfolio/item/chelonian-wordpress-theme/
  * Description: Bold theme with landing page template to kick-start your project.
- * Version:     0.1.1
+ * Version:     0.2.0
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
  * Tags:        black, blue, one-column, two-columns, right-sidebar, responsive-layout, custom-menu, editor-style, threaded-comments, translation-ready
@@ -123,9 +123,9 @@ body.wordpress{
 }
 #site-title a{
 	display: block;
-	line-height: 0;
-	padding: 30px 18px;
-	padding: 3rem 1.8rem;
+	line-height: 1;
+	padding: 18px;
+	padding: 1.8rem;
 	font-weight: 800;
 	color: #fff;
 }

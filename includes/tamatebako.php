@@ -1,10 +1,11 @@
 <?php
 /**
  ********************************************************************
- * TAMATEBAKO
+ * TAMATEBAKO 1.1.0
+ * for Hybrid Core 2.0.1
  * ------------------------------------------------------------------
  * @author    David Chandra Purnama <david@shellcreeper.com>
- * @version   1.0.1
+ * @version   1.1.0
  * @copyright Genbu Media
  * @link      http://shellcreeper.com
  * @link      http://genbu.me
@@ -512,16 +513,6 @@ function tamatebako_general_setup(){
 
 	/* Automatically add feed links to <head>. */
 	add_theme_support( 'automatic-feed-links' );
-
-	/* HTML 5 */
-	$html5 = array(
-		'search-form',
-		'comment-form',
-		'comment-list',
-		'gallery',
-		'caption'
-	);
-	add_theme_support( 'html5', $html5 );
 
 	/* Set Consistent Read More */
 	add_filter( 'excerpt_more', 'tamatebako_excerpt_more' );
@@ -1391,7 +1382,7 @@ function tamatebako_comments_error(){
 
 
 /**
- * Display any tipe of Attachment
+ * Display any type of Attachment
  * @since 0.1.0
  */
 function tamatebako_attachment(){
@@ -1550,7 +1541,7 @@ function tamatebako_register_sidebars(){
  */
 function tamatebako_register_menus(){
 
-	/* Get theme-supported sidebars. */
+	/* Get theme-supported menus. */
 	$menus = get_theme_support( 'tamatebako-menus' );
 
 	/* No Support, Return */
