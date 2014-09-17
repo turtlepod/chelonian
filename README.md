@@ -47,6 +47,10 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 ## Changelog:
 
+### 0.2.0
+* Fix Site title line height and padding.
+* update HC Lib 2.0.1 + Tamatebako 1.1.0
+
 ### 0.1.1
 * Fix all
 * update to tamatebako 1.0.1
