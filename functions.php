@@ -89,4 +89,4 @@ function chelonian_read_more(){
 }
 
 
-do_action( 'chelonian_after_theme_setup' );
+do_action( 'chelonian_after_setup_theme' );

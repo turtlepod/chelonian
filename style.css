@@ -861,6 +861,8 @@ span.comments-link a:hover{
 .loop-pagination .page-numbers{
 	padding: 10px 15px;
 	padding: 1rem 1.5rem;
+	display: inline-block;
+	margin-bottom: 4px;
 }
 .loop-pagination .page-numbers.current{
 	color: #444;

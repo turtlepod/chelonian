@@ -47,6 +47,15 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 ## Changelog:
 
+### 1.0.0
+* change hook "chelonian_after_theme_setup" to "chelonian_after_setup_theme"
+* Update to HC 2.0.2
+* Update to Tamatebako 1.2.2
+* Add grunt files
+* update language file.
+* Fix margin-padding on mobile.
+* 
+
 ### 0.2.0
 * Fix Site title line height and padding.
 * update HC Lib 2.0.1 + Tamatebako 1.1.0
