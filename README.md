@@ -54,7 +54,8 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 * Add grunt files
 * update language file.
 * Fix margin-padding on mobile.
-* 
+* Change theme uri
+* Add full width background option.
 
 ### 0.2.0
 * Fix Site title line height and padding.

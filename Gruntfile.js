@@ -63,7 +63,6 @@ module.exports = function(grunt) {
 			alljs: {
 				files: {
 					'js/fitvids.min.js': ['js/fitvids.js'],
-					'js/flexslider.min.js': ['js/flexslider.js'],
 					'js/html5shiv.min.js': ['js/html5shiv.js'],
 					'js/respond.min.js': ['js/respond.js'],
 					'js/theme.min.js': ['js/theme.js'],
