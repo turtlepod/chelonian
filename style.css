@@ -469,11 +469,6 @@ body.wordpress.full-size-background{
 		line-height: 35px;
 		line-height: 3.5rem;
 	}
-	/* Italics */
-	.entry-content em,
-	.entry-summary em{
-		font-family: Georgia,serif;
-	}
 .entry-footer{
 	padding: 30px;
 	padding: 3rem;
