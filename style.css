@@ -1,8 +1,8 @@
 /**
  * Theme Name:  Chelonian
- * Theme URI:   http://shellcreeper.com/portfolio/item/chelonian-wordpress-theme/
+ * Theme URI:   http://genbutheme.com/themes/chelonian/
  * Description: Bold theme with landing page template to kick-start your project.
- * Version:     0.2.0
+ * Version:     1.0.0
  * Author:      David Chandra Purnama
  * Author URI:  http://shellcreeper.com
  * Tags:        black, blue, one-column, two-columns, right-sidebar, responsive-layout, custom-menu, editor-style, threaded-comments, translation-ready
@@ -76,14 +76,17 @@ pre{
 }
 /* Images */
 .html5-captions .wp-caption, .wp-caption{
-	border: none;
-	background: #21759B;
-	color: #fff;
+	border: 1px solid #444;
+	background: #fff;
 }
 
 /* === CONTAINER === */
 body.wordpress{
 	background: #1f1f1f;
+}
+body.wordpress.full-size-background{
+	background-size: cover !important;
+	background-attachment: fixed !important;
 }
 #container{
 	width: 100%;
@@ -95,8 +98,6 @@ body.wordpress{
 #header{
 	padding: 0;
 	background: #21759B;
-	background-attachment: fixed;
-	background-size: cover;
 }
 #header:after{
 	content:".";display:block;height:0;clear:both;visibility:hidden;
@@ -124,8 +125,8 @@ body.wordpress{
 #site-title a{
 	display: block;
 	line-height: 1;
-	padding: 18px;
-	padding: 1.8rem;
+	padding: 16px 18px;
+	padding: 1.6rem 1.8rem;
 	font-weight: 800;
 	color: #fff;
 }
@@ -211,14 +212,14 @@ body.wordpress{
 	top: 60px;
 	top: 6rem;
 	z-index: 10;
+	border: 10px solid #3883A5;
 }
 .menu-container ul{
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	background: #3883A5;
-	padding: 10px;
-	padding: 1rem;
+	background: transparent;
+	padding: 0;
 }
 .menu-container ul ul{
 	padding: 0;
@@ -230,18 +231,21 @@ body.wordpress{
 }
 .menu-container li a{
 	display: block;
+	border-bottom: 3px solid #3883A5;
+	background: transparent;
+}
+.menu-container li a .menu-item-wrap{
+	display: block;
 	padding: 10px 20px;
 	padding: 1rem 2rem;
-	margin-bottom: 3px;
-	margin-bottom: 0.3rem;
 	color: #fff;
 	background: #21759B;
 	position: relative;
 }
-.menu-container li a:hover{
+.menu-container li a .menu-item-wrap:hover{
 	background: #111;
 }
-.menu-container li a:after{
+.menu-container li a .menu-item-wrap:after{
 	content: "\f345";
 	position: absolute;
 	right: 15px;
@@ -255,7 +259,7 @@ body.wordpress{
 	-moz-transition: all 0.4s ease-in-out;
 	-o-transition: all 0.4s ease-in-out;
 }
-.menu-container li a:hover:after{
+.menu-container li a .menu-item-wrap:hover:after{
 	right: 10px;
 	right: 1rem;
 	transition: all 0.4s ease-in-out;
@@ -264,43 +268,43 @@ body.wordpress{
 	-moz-transition: all 0.4s ease-in-out;
 	-o-transition: all 0.4s ease-in-out;
 }
-.menu-container li li a{
+.menu-container li li a .menu-item-wrap{
 	border-left: 5px solid rgba(0,0,0,0.3);
 	border-left: 0.5rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li a{
+.menu-container li li li a .menu-item-wrap{
 	border-left: 10px solid rgba(0,0,0,0.3);
 	border-left: 1rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li a{
+.menu-container li li li li a .menu-item-wrap{
 	border-left: 15px solid rgba(0,0,0,0.3);
 	border-left: 1.5rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li a{
+.menu-container li li li li li a .menu-item-wrap{
 	border-left: 20px solid rgba(0,0,0,0.3);
 	border-left: 2rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li li a{
+.menu-container li li li li li li a .menu-item-wrap{
 	border-left: 25px solid rgba(0,0,0,0.3);
 	border-left: 2.5rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li li li a{
+.menu-container li li li li li li li a .menu-item-wrap{
 	border-left: 30px solid rgba(0,0,0,0.3);
 	border-left: 3rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li li li li a{
+.menu-container li li li li li li li li a .menu-item-wrap{
 	border-left: 35px solid rgba(0,0,0,0.3);
 	border-left: 3.5rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li li li li li a{
+.menu-container li li li li li li li li li a .menu-item-wrap{
 	border-left: 40px solid rgba(0,0,0,0.3);
 	border-left: 4rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li li li li li li a{
+.menu-container li li li li li li li li li li a .menu-item-wrap{
 	border-left: 45px solid rgba(0,0,0,0.3);
 	border-left: 4.5rem solid rgba(0,0,0,0.3);
 }
-.menu-container li li li li li li li li li li li a{
+.menu-container li li li li li li li li li li li a .menu-item-wrap{
 	border-left: 50px solid rgba(0,0,0,0.3);
 	border-left: 5rem solid rgba(0,0,0,0.3);
 }
@@ -339,8 +343,8 @@ body.wordpress{
 	text-transform: uppercase;
 	font-size: 37px;
 	font-size: 3.7rem;
-	line-height: 27px;
-	line-height: 2.7rem;
+	line-height: 30px;
+	line-height: 3rem;
 	margin: 0 0 0 30px;
 	margin: 0 0 0 3rem;
 }
@@ -464,11 +468,6 @@ body.wordpress{
 		height: 3.5rem;
 		line-height: 35px;
 		line-height: 3.5rem;
-	}
-	/* Italics */
-	.entry-content em,
-	.entry-summary em{
-		font-family: Georgia,serif;
 	}
 .entry-footer{
 	padding: 30px;
@@ -861,6 +860,8 @@ span.comments-link a:hover{
 .loop-pagination .page-numbers{
 	padding: 10px 15px;
 	padding: 1rem 1.5rem;
+	display: inline-block;
+	margin-bottom: 4px;
 }
 .loop-pagination .page-numbers.current{
 	color: #444;
@@ -895,7 +896,6 @@ span.comments-link a:hover{
 #sidebar-primary-wrap{
 	padding: 30px;
 	margin-bottom: 30px;
-	background: #fff;
 }
 .widget{
 	margin-bottom: 30px;
@@ -1054,3 +1054,35 @@ header h1 strong::-moz-selection {
 .sticky .entry-title a:before{
 	color: yellow;
 }
+
+
+/* Aqua Mode */
+.aqua-mode.layout-content-sidebar1 .main-wrap{
+	background-image: url( 'images/sidebar-bg-aqua.png' );
+}
+.aqua-mode #footer{
+	background: url( 'images/sidebar-bg-aqua.png' );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

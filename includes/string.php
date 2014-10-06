@@ -75,6 +75,13 @@ function chelonian_string( $context ){
 	$text['comment'] = _x( 'Comment', 'comment link', 'chelonian' );
 	$text['comments'] = _x( 'Comments', 'comment link', 'chelonian' );
 
+	/* Customizer Option */
+	$text['primary-color'] = _x( 'Primary Color', 'customizer option', 'chelonian' );
+	$text['secondary-color'] = _x( 'Hover Color', 'customizer option', 'chelonian' );
+	$text['subsidiary-color'] = _x( 'Highlight Color', 'customizer option', 'chelonian' );
+	$text['aqua-mode'] = _x( 'Aqua Mode', 'customizer option', 'chelonian' );
+	$text['full-size-bg'] = _x( 'Full Size Background', 'customizer option', 'chelonian' );
+
 	$text = apply_filters( 'chelonian_string', $text );
 
 	/* Close Sesame ! */
