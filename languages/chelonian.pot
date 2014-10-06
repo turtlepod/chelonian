@@ -2,9 +2,9 @@
 # This file is distributed under the GNU General Public License v2.0 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Chelonian 0.2.0\n"
+"Project-Id-Version: Chelonian 1.0.0\n"
 "Report-Msgid-Bugs-To: http://genbu.me/contact/\n"
-"POT-Creation-Date: 2014-10-03 16:31:51+00:00\n"
+"POT-Creation-Date: 2014-10-06 13:16:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgid "Chelonian"
 msgstr ""
 
 #. Theme URI of the plugin/theme
-msgid "http://shellcreeper.com/portfolio/item/chelonian-wordpress-theme/"
+msgid "http://genbutheme.com/themes/chelonian/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -111,4 +111,29 @@ msgstr ""
 #: includes/string.php:76
 msgctxt "comment link"
 msgid "Comments"
+msgstr ""
+
+#: includes/string.php:79
+msgctxt "customizer option"
+msgid "Primary Color"
+msgstr ""
+
+#: includes/string.php:80
+msgctxt "customizer option"
+msgid "Hover Color"
+msgstr ""
+
+#: includes/string.php:81
+msgctxt "customizer option"
+msgid "Highlight Color"
+msgstr ""
+
+#: includes/string.php:82
+msgctxt "customizer option"
+msgid "Aqua Mode"
+msgstr ""
+
+#: includes/string.php:83
+msgctxt "customizer option"
+msgid "Full Size Background"
 msgstr ""
