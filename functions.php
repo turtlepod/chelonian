@@ -112,107 +112,92 @@ function chelonian_customizer_register( $wp_customize ){
 
 	/* Full size bg setting */
 	$wp_customize->add_setting( 'full_size_background', array(
-    	'default'    => 0,
+    	'default'             => 0,
+		'type'                => 'theme_mod',
+		'capability'          => 'edit_theme_options',
+		'sanitize_callback'   => 'chelonian_sanitize_checkbox',
     ));
 
 	/* add it in background image section */
     $wp_customize->add_control( 'chelonian_full_size_background', array(
-    	'settings'   => 'full_size_background',
-		'section'    => 'background_image',
-		'label'      => chelonian_string( 'full-size-bg' ),
-		'type'       => 'checkbox',
-		'priority'   => 20,
+    	'settings'            => 'full_size_background',
+		'section'             => 'background_image',
+		'label'               => chelonian_string( 'full-size-bg' ),
+		'type'                => 'checkbox',
+		'priority'            => 20,
 	));
 
 	/* COLOR: Primary */
 
 	/* Primary color setting */
 	$wp_customize->add_setting( 'color_primary', array(
-		'default'              => apply_filters( 'theme_mod_color_primary', '21759b' ),
-		'capability'           => 'edit_theme_options',
-		'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-		'sanitize_js_callback' => 'maybe_hash_hex_color',
+		'default'             => apply_filters( 'theme_mod_color_primary', '21759b' ),
+		'type'                => 'theme_mod',
+		'capability'          => 'edit_theme_options',
+		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
 	));
 
 	/* add it in colors section */
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control( $wp_customize, 'custom-colors-primary', array(
-			'label'    => chelonian_string( 'primary-color' ),
-			'section'  => 'colors',
-			'settings' => 'color_primary',
-			'priority' => 10,
-		))
-	);
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'custom-colors-primary', array(
+		'label'               => chelonian_string( 'primary-color' ),
+		'section'             => 'colors',
+		'settings'            => 'color_primary',
+		'priority'            => 10,
+	)));
 
 	/* COLOR: Secondary (Hover) */
 
 	/* Secondary color setting */
-	$wp_customize->add_setting(
-		'color_secondary',
-		array(
-			'default'              => apply_filters( 'theme_mod_color_secondary', '3883A5' ),
-			'capability'           => 'edit_theme_options',
-			'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-			'sanitize_js_callback' => 'maybe_hash_hex_color',
-		)
-	);
+	$wp_customize->add_setting( 'color_secondary', array(
+		'default'             => apply_filters( 'theme_mod_color_secondary', '3883A5' ),
+		'type'                => 'theme_mod',
+		'capability'          => 'edit_theme_options',
+		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
+	));
 
 	/* add it in colors section */
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'custom-colors-secondary',
-			array(
-				'label'    => chelonian_string( 'secondary-color' ),
-				'section'  => 'colors',
-				'settings' => 'color_secondary',
-				'priority' => 10,
-			)
-		)
-	);
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'custom-colors-secondary', array(
+		'label'               => chelonian_string( 'secondary-color' ),
+		'section'             => 'colors',
+		'settings'            => 'color_secondary',
+		'priority'            => 10,
+	)));
 
 	/* COLOR: Subsidiary (Highlight) */
 
 	/* Subsidiary color setting */
-	$wp_customize->add_setting(
-		'color_subsidiary',
-		array(
-			'default'              => apply_filters( 'theme_mod_color_subsidiary', 'ffff00' ),
-			'capability'           => 'edit_theme_options',
-			'sanitize_callback'    => 'sanitize_hex_color_no_hash',
-			'sanitize_js_callback' => 'maybe_hash_hex_color',
-		)
-	);
+	$wp_customize->add_setting( 'color_subsidiary', array(
+		'default'             => apply_filters( 'theme_mod_color_subsidiary', 'ffff00' ),
+		'type'                => 'theme_mod',
+		'capability'          => 'edit_theme_options',
+		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
+	));
 
 	/* add it in colors section */
-	$wp_customize->add_control(
-		new WP_Customize_Color_Control(
-			$wp_customize,
-			'custom-colors-subsidiary',
-			array(
-				'label'    => chelonian_string( 'subsidiary-color' ),
-				'section'  => 'colors',
-				'settings' => 'color_subsidiary',
-				'priority' => 10,
-			)
-		)
-	);
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'custom-colors-subsidiary', array(
+		'label'               => chelonian_string( 'subsidiary-color' ),
+		'section'             => 'colors',
+		'settings'            => 'color_subsidiary',
+		'priority'            => 10,
+	)));
 
 	/* === COLOR: Aqua Mode === */
 
 	/* Aqua Mode setting */
 	$wp_customize->add_setting( 'aqua_mode', array(
-		'default'    => 0,
-		'capability' => 'edit_theme_options',
+		'default'             => 0,
+		'type'                => 'theme_mod',
+		'capability'          => 'edit_theme_options',
+		'sanitize_callback'   => 'chelonian_sanitize_checkbox',
 	));
 
 	/* add it in colors section */
     $wp_customize->add_control( 'chelonian_aqua_mode', array(
-    	'settings'   => 'aqua_mode',
-		'section'    => 'colors',
-		'label'      => chelonian_string( 'aqua-mode' ),
-		'type'       => 'checkbox',
-		'priority'   => 10,
+    	'settings'            => 'aqua_mode',
+		'section'             => 'colors',
+		'label'               => chelonian_string( 'aqua-mode' ),
+		'type'                => 'checkbox',
+		'priority'            => 10,
 	));
 }
 
@@ -227,10 +212,10 @@ function chelonian_color_wp_head(){
 	$css = '';
 
 	/* User setting */
-	$primary = get_theme_mod( 'color_primary', '21759b' );
-	$secondary = get_theme_mod( 'color_secondary', '3883A5' );
-	$subsidiary = get_theme_mod( 'color_subsidiary', 'ffff00' );
-	$aqua = get_theme_mod( 'aqua_mode', '' );
+	$primary = chelonian_sanitize_hex_color_no_hash( get_theme_mod( 'color_primary', '21759b' ) );
+	$secondary = chelonian_sanitize_hex_color_no_hash( get_theme_mod( 'color_secondary', '3883A5' ) );
+	$subsidiary = chelonian_sanitize_hex_color_no_hash( get_theme_mod( 'color_subsidiary', 'ffff00' ) );
+	$aqua = chelonian_sanitize_checkbox( get_theme_mod( 'aqua_mode', '' ) );
 
 	/* RGB Color */
 	$primary_rgb = join( ', ', hybrid_hex_to_rgb( $primary ) );
@@ -262,7 +247,7 @@ function chelonian_color_wp_head(){
 	}
 
 	/* Aqua Mode */
-	if ( !empty( $aqua ) ){
+	if ( $aqua ){
 
 		/* Primary Color */
 		$css .= ".entry-title a{ background: rgba({$primary_rgb},0.7); }";
@@ -285,18 +270,63 @@ function chelonian_color_wp_head(){
 function chelonian_body_class( $classes ){
 
 	/* full size background */
-	if ( 1 == get_theme_mod( 'full_size_background', '' ) ){
+	if ( chelonian_sanitize_checkbox( get_theme_mod( 'full_size_background', '' ) ) ){
 		$classes[] = 'full-size-background';
 	}
 
 	/* Aqua Mode */
-	if ( 1 == get_theme_mod( 'aqua_mode', '' ) ){
+	if ( chelonian_sanitize_checkbox( get_theme_mod( 'aqua_mode', '' ) ) ){
 		$classes[] = 'aqua-mode';
 	}
 
 	return $classes;
 }
 
+
+/**
+ * Checkbox Sanitization Helper Function
+ * @since 1.0.1
+ */
+function chelonian_sanitize_checkbox( $input ){
+	if ( isset($input) && !empty($input) ){
+		return true;
+	}
+	return false;
+}
+
+
+/**
+ * Hex Color Sanitization Helper Function
+ * This function added to sanitize color in front end, wp sanitize_hex_color() only available in customize screen.
+ * This is duplicate for sanitize_hex_color() wp-includes/class-wp-customize-manager.php
+ * @since 1.0.1
+ */
+function chelonian_sanitize_hex_color( $color ){
+	if ( '' === $color )
+		return '';
+
+	// 3 or 6 hex digits, or the empty string.
+	if ( preg_match('|^#([A-Fa-f0-9]{3}){1,2}$|', $color ) )
+		return $color;
+
+	return null;
+}
+
+
+/**
+ * Hex Color Sanitization Helper Function
+ * This function added to sanitize color in front end, wp sanitize_hex_color_no_hash() only available in customize screen.
+ * This is duplicate for sanitize_hex_color_no_hash() wp-includes/class-wp-customize-manager.php
+ * @since 1.0.1
+ */
+function chelonian_sanitize_hex_color_no_hash( $color ){
+	$color = ltrim( $color, '#' );
+
+	if ( '' === $color )
+		return '';
+
+	return chelonian_sanitize_hex_color( '#' . $color ) ? $color : null;
+}
 
 
 do_action( 'chelonian_after_setup_theme' );

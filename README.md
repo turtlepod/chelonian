@@ -50,6 +50,9 @@ This theme is licensed under the [GNU General Public License](http://www.gnu.org
 
 ## Changelog:
 
+### 1.0.1
+* better data sanitization in customizer.
+
 ### 1.0.0
 * change hook "chelonian_after_theme_setup" to "chelonian_after_setup_theme"
 * Update to HC 2.0.2
