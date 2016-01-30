@@ -29,6 +29,7 @@ function nokonoko_enqueue_scripts(){
 	wp_enqueue_script( "{$name}-script" );
 
 	/* == CSS == */
+	wp_enqueue_style( "{$name}-google-fonts" );
 	wp_enqueue_style( "dashicons" );
 	wp_enqueue_style( "{$name}-style" ); /* main css. */
 
@@ -55,6 +56,9 @@ function nokonoko_register_scripts(){
 	wp_register_script( "{$name}-script", tamatebako_theme_file( "assets/js/jquery.theme", "js" ), array( 'jquery', 'fitvids' ), tamatebako_theme_version(), true );
 
 	/* === CSS === */
+
+	/* Google Fonts */
+	wp_register_style( "{$name}-google-fonts", tamatebako_google_fonts_url( array( 'Open Sans' => '400,400italic,700,700italic,800,800italic' ) ) );
 
 	/* Theme Debug */
 	wp_register_style( "{$name}-debug", tamatebako_theme_file( "assets/css/base/debug", "css" ), array() );
