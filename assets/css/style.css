@@ -394,6 +394,7 @@ body.wordpress.full-size-background{
 	display: block;
 	float: left;
 	color: #444;
+	text-transform: uppercase;
 }
 .entry-byline .entry-date a{
 	color: #444;
@@ -653,6 +654,14 @@ span.comments-link a:hover{
 	padding: 2rem;
 	margin-bottom: 40px;
 	margin-bottom: 4rem;
+	text-transform: uppercase;
+}
+#comments-number:before{
+	content: "\f125";
+	margin-right: 5px;
+	font-family: "dashicons";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
 }
 
 /* Comment */
@@ -866,6 +875,36 @@ span.comments-link a:hover{
 #respond .comment-notes{
 	margin-bottom: 20px;
 	margin-bottom: 2rem;
+}
+/* Comment Form Icon */
+.comment-form label[for="comment"],
+.comment-form label[for="author"],
+.comment-form label[for="email"],
+.comment-form label[for="url"]{
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.comment-form label[for="comment"]:before,
+.comment-form label[for="author"]:before,
+.comment-form label[for="email"]:before,
+.comment-form label[for="url"]:before{
+	content: "";
+	margin-right: 5px;
+	font-family: "dashicons";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+}
+.comment-form label[for="comment"]:before{
+	content: "\f101";
+}
+.comment-form label[for="author"]:before{
+	content: "\f110";
+}
+.comment-form label[for="email"]:before{
+	content: "\f466";
+}
+.comment-form label[for="url"]:before{
+	content: "\f319";
 }
 
 /* comments closed */
@@ -1124,8 +1163,6 @@ span.comments-link a:hover{
 	background: #aaa;
 }
 
-
-
 /* === FOOTER === */
 #footer{
 	color: #444;
@@ -1318,6 +1355,7 @@ header h1 strong::-moz-selection {
 		margin-left: 0;
 		float: left;
 		width: 100%;
+		background: url( '../images/sidebar-bg.png' ) repeat;
 	}
 	.wordpress #sidebar-primary-wrap .widget{
 	}
@@ -1343,15 +1381,15 @@ header h1 strong::-moz-selection {
 
 /* === 500px ===  */
 @media screen and (max-width: 500px) {
-	.loop-title{
+	.archive-title{
 		margin-left: 10px;
 		margin-left: 1rem;
 	}
-	.loop-description{
+	.archive-description{
 		padding: 10px 10px 0;
 		padding: 1rem 1rem 0;
 	}
-	.entry-byline .entry-published{
+	.entry-byline .entry-date{
 		padding: 5px 10px;
 		padding: 0.5rem 1rem;
 	}
@@ -1359,7 +1397,8 @@ header h1 strong::-moz-selection {
 		padding: 5px 10px;
 		padding: 0.5rem 1rem;
 	}
-	.entry-title a{
+	.entry-title a,
+	.singular .entry-title{
 		padding: 20px 10px;
 		padding: 2rem 1rem;
 	}
@@ -1377,9 +1416,9 @@ header h1 strong::-moz-selection {
 		padding: 10px;
 		padding: 1rem;
 	}
-	.loop-nav{
-		padding: 10px;
-		padding: 1rem;
+	.navigation.pagination{
+		padding: 10px 0;
+		padding: 1rem 0;
 	}
 	#comments-number{
 		padding: 10px;
