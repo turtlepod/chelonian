@@ -134,7 +134,6 @@ function chelonian_color_print_css(){
 		$css .= "#header{ background: #{$primary}; }";
 		$css .= ".menu-container li a .menu-item-wrap{ background: #{$primary};}";
 		$css .= ".singular.entry-title, .entry-title a{ background: #{$primary}; }";
-		$css .= ".entry-byline .entry-date a:hover, .entry-byline .entry-date a:focus{ color: #{$primary}; }";
 	}
 
 	/* Secondary Color */
@@ -143,6 +142,7 @@ function chelonian_color_print_css(){
 		$css .= ".button:hover, button:hover, input[type='button']:hover, input[type='reset']:hover, input[type='submit']:hover,#menu-toggle-primary a.active,#menu-toggle-primary a:hover,a.comments-link:hover,span.comments-link a:hover,#comments .comment-reply-link:hover,#respond #cancel-comment-reply-link:hover,.navigation.pagination a.page-numbers:hover{ background: #{$secondary}; }";
 		$css .= ".menu-container,.menu-container li a{ border-color: #{$secondary}; }";
 		$css .= ".entry-title a:hover{ background: #{$secondary}; }";
+		$css .= ".entry-byline .entry-date a:hover, .entry-byline .entry-date a:focus{ color: #{$secondary}; }";
 	}
 
 	/* Subsidiary Color */

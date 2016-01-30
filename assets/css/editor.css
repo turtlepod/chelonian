@@ -3,7 +3,7 @@ html{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-
 
 /* === EDITOR STYLE === */
 body{
-	font-size:1.4em; /* use em for default, chrome fix */
+	font-size:1.7em; /* use em for default, chrome fix */
 }
 a{
 	color: #21759B;

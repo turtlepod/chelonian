@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Theme\n"
 "Report-Msgid-Bugs-To: http://genbu.me/contact/\n"
-"POT-Creation-Date: 2016-01-30 22:16+0700\n"
+"POT-Creation-Date: 2016-01-30 22:49+0700\n"
 "PO-Revision-Date: 2015-09-05 12:42+0700\n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: \n"
@@ -221,4 +221,9 @@ msgstr ""
 #: includes/translation.php:41
 msgctxt "comment"
 msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: includes/utility.php:11 includes/utility.php:12
+msgctxt "customizer"
+msgid "Custom CSS"
 msgstr ""

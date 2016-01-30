@@ -25,6 +25,7 @@ a:focus{
 blockquote,q{
 	font-family: Georgia,serif;
 	font-size: 1.5em;
+	line-height: 1.7em;
 	color: #666;
 	position: relative;
 	padding: 30px;
@@ -536,7 +537,15 @@ span.comments-link a:hover{
 .entry-taxonomy.post_tag .entry-taxonomy-text{
 	display: none;
 }
-
+/* Edit Link */
+.post-edit-link:before{
+	content: "\f464";
+	margin-right: 5px;
+	color: #444;
+	font-family: "dashicons";
+	vertical-align: top;
+	-webkit-font-smoothing: antialiased;
+}
 
 
 /* Page links */

@@ -40,6 +40,7 @@ This theme is licensed under the GNU General Public License, version 2 (GPL) or 
 * Use Icon Font (Dashicons) for various element.
 * Add Font options.
 * Better widgets styling.
+* Add Custom CSS & Customizer Mobile Preview.
 
 = 1.0.1 =
 
