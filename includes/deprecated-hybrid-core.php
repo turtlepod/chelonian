@@ -4,10 +4,12 @@
  * @since 2.0.0
 **/
 
+
 /**
- * Hybrid ATTR
+ * Hybrid Get ATTR
  */
-function hybrid_attr( $name, $context ){
+function hybrid_get_attr( $name, $context = '' ){
+	ob_start();
 	if( 'body' == $name ){
 		body_class();
 	}
@@ -58,7 +60,17 @@ function hybrid_attr( $name, $context ){
 	else if( 'comment-permalink' == $name ){
 		echo 'class="comment-permalink"';
 	}
+	$str = ob_get_contents();
+	ob_end_clean();
 }
+
+/**
+ * Hybrid ATTR
+ */
+function hybrid_attr( $name, $context = '' ){
+	echo hybrid_get_attr( $name, $context );
+}
+
 
 
 /**
