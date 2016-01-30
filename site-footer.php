@@ -1,10 +1,9 @@
-<footer <?php hybrid_attr( 'footer' ); ?>>
+<footer id="footer">
 
 	<div class="wrap">
 
 		<p class="credit">
-			<?php echo hybrid_get_site_link() . ' &#169; ' . date_i18n( 'Y' ); ?>
-			<?php hybrid_get_menu( 'footer' ); ?>
+			<a rel="home" href="<?php echo esc_url( home_url() );?>" class="site-link"><?php bloginfo( 'name' ); ?></a> &#169;  <?php echo date_i18n( 'Y' ); ?>
 		</p><!-- .credit -->
 
 	</div><!-- .wrap -->

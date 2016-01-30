@@ -6,7 +6,7 @@ if ( strpos( get_theme_mod( 'theme_layout' ),'sidebar1' ) === false) {
 
 <div id="sidebar-primary-wrap">
 
-	<aside <?php hybrid_attr( 'sidebar', 'primary' ); ?>>
+	<aside class="sidebar" id="sidebar-primary">
 
 		<?php if ( is_active_sidebar( 'primary' ) ) : // If the sidebar has widgets. ?>
 
@@ -16,7 +16,8 @@ if ( strpos( get_theme_mod( 'theme_layout' ),'sidebar1' ) === false) {
 
 			<?php the_widget( 'WP_Widget_Recent_Posts',
 				array(
-					'number' => 10,
+					'number' => 5,
+					'show_date' => 1,
 				),
 				array(
 					'before_widget' => '<section class="widget widget_recent_entries">',
@@ -26,9 +27,14 @@ if ( strpos( get_theme_mod( 'theme_layout' ),'sidebar1' ) === false) {
 				)
 			); ?>
 
-			<?php the_widget( 'WP_Widget_Pages', array(),
+			<?php the_widget( 'WP_Widget_Categories',
 				array(
-					'before_widget' => '<section class="widget widget_pages">',
+					'count' => 1,
+					'hierarchical' => 1,
+					'dropdown' => 1,
+				),
+				array(
+					'before_widget' => '<section class="widget widget_recent_entries">',
 					'after_widget'  => '</section>',
 					'before_title'  => '<div class="widget-title">',
 					'after_title'   => '</div>'
