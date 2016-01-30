@@ -686,6 +686,8 @@ span.comments-link a:hover{
 	margin-top: -40px;
 	margin-top: -4rem;
 }
+.comment.bypostauthor{
+}
 #comments .comment-wrap{
 	border-bottom: 1px solid #ccc;
 }
