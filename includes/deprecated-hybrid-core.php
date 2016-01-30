@@ -21,6 +21,11 @@ function hybrid_get_attr( $name, $context = '' ){
 			echo 'role="navigation" class="menu" id="menu-primary"';
 		}
 	}
+	else if( 'sidebar' == $name ){
+		if( 'primary' == $context ){
+			echo 'class="sidebar" id="sidebar-primary"';
+		}
+	}
 	else if( 'content' == $name ){
 		echo 'class="content" id="content"';
 	}
@@ -60,6 +65,7 @@ function hybrid_get_attr( $name, $context = '' ){
 	else if( 'comment-permalink' == $name ){
 		echo 'class="comment-permalink"';
 	}
+
 	$str = ob_get_contents();
 	ob_end_clean();
 }

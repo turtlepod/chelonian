@@ -6,7 +6,7 @@ if ( strpos( get_theme_mod( 'theme_layout' ),'sidebar1' ) === false) {
 
 <div id="sidebar-primary-wrap">
 
-	<aside <?php hybrid_attr( 'sidebar', 'primary' ); ?>>
+	<aside class="sidebar" id="sidebar-primary">
 
 		<?php if ( is_active_sidebar( 'primary' ) ) : // If the sidebar has widgets. ?>
 
