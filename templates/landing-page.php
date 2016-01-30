@@ -30,7 +30,7 @@
 
 			<div class="main-wrap">
 
-				<main <?php hybrid_attr( 'content' ); ?>>
+				<main class="content" id="content">
 
 					<?php if ( have_posts() ){ /* Posts Found */ ?>
 
@@ -41,10 +41,10 @@
 								<?php the_post(); /* Load Post Data */ ?>
 
 								<?php /* Start Content */ ?>
-								<article <?php hybrid_attr( 'post' ); ?>>
+								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="entry-wrap">
 
-										<div <?php hybrid_attr( 'entry-content' ); ?>>
+										<div class="entry-content">
 											<?php the_content(); ?>
 										</div><!-- .entry-content -->
 

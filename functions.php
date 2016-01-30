@@ -29,8 +29,9 @@ function chelonian_setup(){
 	if( ! tamatebako_minimum_requirement( $back_compat_args ) ) return;
 
 	/* === DEPRECATED FUNCTIONS === */
-	tamatebako_include( 'includes/deprecated-hybrid-core' );
-	tamatebako_include( 'includes/deprecated-tamatebako' );
+	//tamatebako_include( 'includes/deprecated-hybrid-core' );
+	//tamatebako_include( 'includes/deprecated-tamatebako' );
+	tamatebako_include( 'includes/deprecated-chelonian' );
 
 	/* === TEMPLATE FUNCTIONS === */
 	tamatebako_include( 'includes/template-functions' );
