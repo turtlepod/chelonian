@@ -12,7 +12,7 @@
 
 			<div class="main-wrap">
 
-				<main <?php hybrid_attr( 'content' ); ?>>
+				<main class="content" id="content">
 
 					<?php if ( have_posts() ){ /* Posts Found */ ?>
 
@@ -25,7 +25,7 @@
 								<?php the_post(); /* Load Post Data */ ?>
 
 								<?php /* Start Content */ ?>
-								<?php tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
+								<?php //tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
 								<?php /* End Content */ ?>
 
 							<?php } /* End Loop */ ?>
@@ -42,7 +42,7 @@
 
 				</main><!-- #content -->
 
-				<?php hybrid_get_sidebar( 'primary' ); ?>
+				<?php tamatebako_get_sidebar( 'primary' ); ?>
 
 			</div><!-- .main-wrap -->
 
