@@ -6,7 +6,8 @@ html{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-
 a{
 	color: #21759B;
 }
-a:hover{
+a:hover,
+a:focus{
 	color: #444;
 }
 /* Button */
@@ -70,10 +71,6 @@ pre{
 /* === CONTAINER === */
 body.wordpress{
 	background: #1f1f1f;
-}
-body.wordpress.full-size-background{
-	background-size: cover !important;
-	background-attachment: fixed !important;
 }
 #container{
 	width: 100%;
@@ -1358,6 +1355,13 @@ header h1 strong::-moz-selection {
 		background: url( '../images/sidebar-bg.png' ) repeat;
 	}
 	.wordpress #sidebar-primary-wrap .widget{
+	}
+	/* Aqua Mode */
+	.aqua-mode.layout-content-sidebar1 .main-wrap{
+		background: none;
+	}
+	.wordpress.aqua-mode #sidebar-primary-wrap{
+		background: url( '../images/sidebar-bg-aqua.png' ) repeat;
 	}
 }
 
