@@ -24,9 +24,9 @@ function chelonian_setup(){
 	if( ! tamatebako_minimum_requirement( $back_compat_args ) ) return;
 
 	/* === DEPRECATED FUNCTIONS === */
-	tamatebako_include( 'includes/deprecated-hybrid-core' );
-	tamatebako_include( 'includes/deprecated-tamatebako' );
-	tamatebako_include( 'includes/deprecated-chelonian' );
+	tamatebako_include( 'includes/deprecated/deprecated-hybrid-core' );
+	tamatebako_include( 'includes/deprecated/deprecated-tamatebako' );
+	tamatebako_include( 'includes/deprecated/deprecated-chelonian' );
 
 	/* === TEMPLATE FUNCTIONS === */
 	tamatebako_include( 'includes/template-functions' );
@@ -36,6 +36,9 @@ function chelonian_setup(){
 
 	/* === SCRIPTS === */
 	tamatebako_include( 'includes/scripts' );
+
+	/* === CUSTOM COLORS === */
+	tamatebako_include( 'includes/custom-colors' );
 
 	/* === CUSTOM FONTS === */
 	tamatebako_include( 'includes/custom-fonts' );
@@ -49,17 +52,8 @@ function chelonian_setup(){
 	/* === BACKGROUND === */
 	tamatebako_include( 'includes/background' );
 
-	/* === HEADER IMAGE === */
-	tamatebako_include( 'includes/header-image' );
-
-	/* === LOGO === */
-	tamatebako_include( 'includes/logo' );
-
 	/* === UTILITY: Mobile View, Custom CSS === */
 	tamatebako_include( 'includes/utility' );
-
-	/* === POST FORMATS === */
-	tamatebako_include( 'includes/post-formats' );
 
 }
 

@@ -6,7 +6,7 @@
 /* === EDITOR STYLE === */
 
 $editor_css = array(
-	tamatebako_google_fonts_url( array( 'Open Sans' => '400,400italic,700,700italic,800,800italic' ) ),
+	//tamatebako_google_fonts_url( array( 'Open Sans' => '400,400italic,700,700italic,800,800italic' ) ),
 	'assets/css/editor.css',
 );
 add_editor_style( $editor_css );
@@ -14,12 +14,12 @@ add_editor_style( $editor_css );
 
 /* === ENQUEUE SCRIPTS === */
 
-add_action( 'wp_enqueue_scripts', 'nokonoko_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'chelonian_enqueue_scripts' );
 
 /**
  * Enqueue Scripts
  */
-function nokonoko_enqueue_scripts(){
+function chelonian_enqueue_scripts(){
 	global $tamatebako;
 	$name = $tamatebako->name;
 	$child = $tamatebako->child;
@@ -29,7 +29,7 @@ function nokonoko_enqueue_scripts(){
 	wp_enqueue_script( "{$name}-script" );
 
 	/* == CSS == */
-	wp_enqueue_style( "{$name}-google-fonts" );
+	//wp_enqueue_style( "{$name}-google-fonts" );
 	wp_enqueue_style( "dashicons" );
 	wp_enqueue_style( "{$name}-style" ); /* main css. */
 
@@ -40,12 +40,12 @@ function nokonoko_enqueue_scripts(){
 
 /* === REGISTER SCRIPTS === */
 
-add_action( 'wp_enqueue_scripts', 'nokonoko_register_scripts', 1 );
+add_action( 'wp_enqueue_scripts', 'chelonian_register_scripts', 1 );
 
 /**
  * Register Scripts
  */
-function nokonoko_register_scripts(){
+function chelonian_register_scripts(){
 	global $tamatebako;
 	$name = $tamatebako->name;
 
@@ -58,7 +58,7 @@ function nokonoko_register_scripts(){
 	/* === CSS === */
 
 	/* Google Fonts */
-	wp_register_style( "{$name}-google-fonts", tamatebako_google_fonts_url( array( 'Open Sans' => '400,400italic,700,700italic,800,800italic' ) ) );
+	//wp_register_style( "{$name}-google-fonts", tamatebako_google_fonts_url( array( 'Open Sans' => '400,400italic,700,700italic,800,800italic' ) ) );
 
 	/* Theme Debug */
 	wp_register_style( "{$name}-debug", tamatebako_theme_file( "assets/css/base/debug", "css" ), array() );
