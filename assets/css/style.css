@@ -1409,6 +1409,11 @@ header h1 strong::-moz-selection {
 		padding: 80px 20px 8px 2px;
 		padding: 8rem 2rem 8rem 2rem;
 	}
+	.landing-page-section .sidebar{
+		width: 100%;
+		margin-bottom: 20px;
+		margin-bottom: 2rem;
+	}
 	#respond .comment-form-author,
 	#respond .comment-form-email,
 	#respond .comment-form-url{
