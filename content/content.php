@@ -1,18 +1,21 @@
-<article <?php hybrid_attr( 'post' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 	<div class="entry-wrap">
 
 		<div class="entry-header">
-			<?php the_title( '<h2 ' . hybrid_get_attr( 'entry-title' ) . '><a href="' . get_permalink() . '" rel="bookmark" itemprop="url">', '</a></h2>' ); ?>
+			<?php tamatebako_entry_title(); ?>
 		</div><!-- .entry-header -->
 
-		<div <?php hybrid_attr( 'entry-summary' ); ?>>
+		<div class="entry-summary">
 			<?php the_excerpt(); ?>
+			<?php chelonian_read_more(); ?>
 		</div><!-- .entry-summary -->
 
 		<footer class="entry-footer">
 			<?php edit_post_link(); ?>
-			<?php tamatebako_entry_terms(); ?>
+			<?php tamatebako_entry_taxonomies(); ?>
 		</footer><!-- .entry-footer -->
 
 	</div><!-- .entry-wrap -->
+
 </article><!-- .entry -->

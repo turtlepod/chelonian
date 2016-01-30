@@ -40,6 +40,9 @@ function hybrid_attr( $name, $context ){
 	else if( 'entry-summary' == $name ){
 		echo 'class="entry-summary"';
 	}
+	else if( 'entry-content' == $name ){
+		echo 'class="entry-content"';
+	}
 }
 
 
