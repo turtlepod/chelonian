@@ -25,7 +25,7 @@
 								<?php the_post(); /* Load Post Data */ ?>
 
 								<?php /* Start Content */ ?>
-								<?php //tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
+								<?php tamatebako_get_template( 'content' ); // Loads the content/*.php template. ?>
 								<?php /* End Content */ ?>
 
 							<?php } /* End Loop */ ?>

@@ -32,6 +32,9 @@ function chelonian_setup(){
 	//tamatebako_include( 'includes/deprecated-hybrid-core' );
 	//tamatebako_include( 'includes/deprecated-tamatebako' );
 
+	/* === TEMPLATE FUNCTIONS === */
+	tamatebako_include( 'includes/template-functions' );
+
 	/* === TRANSLATION === */
 	tamatebako_include( 'includes/translation' );
 
