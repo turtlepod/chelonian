@@ -27,6 +27,7 @@ a:focus {
 blockquote,q{
 	font-family: Georgia,serif;
 	font-size: 1.5em;
+	line-height: 1.7em;
 	color: #666;
 	position: relative;
 	padding: 30px;

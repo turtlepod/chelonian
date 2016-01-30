@@ -31,6 +31,9 @@ function chelonian_setup(){
 	/* === TEMPLATE FUNCTIONS === */
 	tamatebako_include( 'includes/template-functions' );
 
+	/* === LANDING PAGE === */
+	tamatebako_include( 'includes/landing-page' );
+
 	/* === TRANSLATION === */
 	tamatebako_include( 'includes/translation' );
 

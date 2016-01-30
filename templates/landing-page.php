@@ -19,7 +19,10 @@
 		<h1 id="landing-page-title"><?php echo get_post_field( 'post_title', get_queried_object_id() ); ?></h1>
 
 		<div id="landing-page-description">
-			<?php echo wpautop( get_post_field( 'post_excerpt', get_queried_object_id() ) ); ?>
+			<?php echo wp_kses_post( wpautop( get_theme_mod( 'landing_page_description' ) ) ); ?>
+			<?php if( get_theme_mod( 'landing_page_button_url' ) ){ ?>
+				<a href="<?php echo esc_url( get_theme_mod( 'landing_page_button_url' ) ); ?>" class="button"><?php echo esc_attr( get_theme_mod( 'landing_page_button_text', 'Link' ) ); ?></a>
+			<?php } ?>
 		</div>
 
 	</header>
@@ -44,8 +47,14 @@
 								<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 									<div class="entry-wrap">
 
-										<div class="entry-content">
+										<div class="entry-content landing-page-section">
 											<?php the_content(); ?>
+										</div><!-- .entry-content -->
+
+										<div class="widgetize col-3 landing-page-section">
+											<?php tamatebako_get_sidebar( 'landing-page-1' ); ?>
+											<?php tamatebako_get_sidebar( 'landing-page-2' ); ?>
+											<?php tamatebako_get_sidebar( 'landing-page-3' ); ?>
 										</div><!-- .entry-content -->
 
 									</div><!-- .entry-wrap -->

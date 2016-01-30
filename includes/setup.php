@@ -14,6 +14,9 @@ if ( ! isset( $content_width ) ){
 
 $sidebars_args = array(
 	"primary"   => array( "name" => _x( 'Sidebar', 'sidebar name', 'chelonian' ), "description" => "" ),
+	"landing-page-1"   => array( "name" => _x( 'Landing Page Widget #1', 'sidebar name', 'chelonian' ), "description" => "" ),
+	"landing-page-2"   => array( "name" => _x( 'Landing Page Widget #2', 'sidebar name', 'chelonian' ), "description" => "" ),
+	"landing-page-3"   => array( "name" => _x( 'Landing Page Widget #3', 'sidebar name', 'chelonian' ), "description" => "" ),
 );
 add_theme_support( 'tamatebako-sidebars', $sidebars_args );
 

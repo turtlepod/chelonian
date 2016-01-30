@@ -41,6 +41,7 @@ This theme is licensed under the GNU General Public License, version 2 (GPL) or 
 * Add Font options.
 * Better widgets styling.
 * Add Custom CSS & Customizer Mobile Preview.
+* Better landing page template (settings + widgets).
 
 = 1.0.1 =
 

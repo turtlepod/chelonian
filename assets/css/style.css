@@ -1266,6 +1266,35 @@ span.comments-link a:hover{
 	-moz-transition: all 0.4s ease-in-out;
 	-o-transition: all 0.4s ease-in-out;
 }
+.landing-page-section{
+	background: #fff;
+	padding: 30px;
+	padding: 3rem;
+	margin-bottom: 30px;
+	margin-bottom: 3rem;
+}
+.landing-page-section:last-child{
+	margin-bottom: 0;
+}
+.landing-page-section:after{
+	content:".";display:block;height:0;clear:both;visibility:hidden;
+}
+.landing-page-section.widgetize{
+	padding-right: 0;
+}
+.landing-page-section .sidebar{
+	width: 33.33%;
+	padding-right: 30px;
+	padding-right: 3rem;
+	float: left;
+}
+.landing-page-section .widget-title{
+	text-align: center;
+}
+
+#landing-page-widget-1{
+	
+}
 
 
 /* === STYLE === */
