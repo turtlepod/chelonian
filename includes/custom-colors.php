@@ -17,7 +17,7 @@ function chelonian_color_customizer( $wp_customize ){
 
 	/* Primary color setting */
 	$wp_customize->add_setting( 'color_primary', array(
-		'default'             => apply_filters( 'theme_mod_color_primary', '21759b' ),
+		'default'             => apply_filters( 'theme_mod_color_primary', '#21759b' ),
 		'type'                => 'theme_mod',
 		'capability'          => 'edit_theme_options',
 		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
@@ -35,7 +35,7 @@ function chelonian_color_customizer( $wp_customize ){
 
 	/* Secondary color setting */
 	$wp_customize->add_setting( 'color_secondary', array(
-		'default'             => apply_filters( 'theme_mod_color_secondary', '3883A5' ),
+		'default'             => apply_filters( 'theme_mod_color_secondary', '#3883A5' ),
 		'type'                => 'theme_mod',
 		'capability'          => 'edit_theme_options',
 		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
@@ -53,7 +53,7 @@ function chelonian_color_customizer( $wp_customize ){
 
 	/* Subsidiary color setting */
 	$wp_customize->add_setting( 'color_subsidiary', array(
-		'default'             => apply_filters( 'theme_mod_color_subsidiary', 'ffff00' ),
+		'default'             => apply_filters( 'theme_mod_color_subsidiary', '#ffff00' ),
 		'type'                => 'theme_mod',
 		'capability'          => 'edit_theme_options',
 		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
