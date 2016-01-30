@@ -19,8 +19,9 @@ function chelonian_color_customizer( $wp_customize ){
 	$wp_customize->add_setting( 'color_primary', array(
 		'default'             => apply_filters( 'theme_mod_color_primary', '#21759b' ),
 		'type'                => 'theme_mod',
+		'transport'           => 'postMessage',
 		'capability'          => 'edit_theme_options',
-		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
+		'sanitize_callback'   => 'tamatebako_sanitize_hex_color',
 	));
 
 	/* add it in colors section */
@@ -37,8 +38,9 @@ function chelonian_color_customizer( $wp_customize ){
 	$wp_customize->add_setting( 'color_secondary', array(
 		'default'             => apply_filters( 'theme_mod_color_secondary', '#3883A5' ),
 		'type'                => 'theme_mod',
+		'transport'           => 'postMessage',
 		'capability'          => 'edit_theme_options',
-		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
+		'sanitize_callback'   => 'tamatebako_sanitize_hex_color',
 	));
 
 	/* add it in colors section */
@@ -55,8 +57,9 @@ function chelonian_color_customizer( $wp_customize ){
 	$wp_customize->add_setting( 'color_subsidiary', array(
 		'default'             => apply_filters( 'theme_mod_color_subsidiary', '#ffff00' ),
 		'type'                => 'theme_mod',
+		'transport'           => 'postMessage',
 		'capability'          => 'edit_theme_options',
-		'sanitize_callback'   => 'sanitize_hex_color_no_hash',
+		'sanitize_callback'   => 'tamatebako_sanitize_hex_color',
 	));
 
 	/* add it in colors section */
@@ -167,4 +170,64 @@ function chelonian_color_print_css(){
 	if ( !empty( $css ) ){
 		echo "\n" . '<style type="text/css" id="chelonian-colors-css">' . trim( $css ) . '</style>' . "\n";
 	}
+
+	/* Customizer Only (special placeholder for link color). */
+	global $wp_customize;
+	if ( isset( $wp_customize ) ){
+		echo "\n" . '<style type="text/css" id="chelonian-color-primary-css"></style>' . "\n";
+		echo "\n" . '<style type="text/css" id="chelonian-color-secondary-css"></style>' . "\n";
+		echo "\n" . '<style type="text/css" id="chelonian-color-subsidiary-css"></style>' . "\n";
+	}
+}
+
+/* Customizer Preview JS */
+add_action( 'customize_preview_init', 'chelonian_customize_preview_js' );
+
+
+/**
+ * Preview JS
+ * @since 1.0.0
+ */
+function chelonian_customize_preview_js(){
+
+	/* Color */
+	wp_enqueue_script( 'chelonian-customizer-color', trailingslashit( get_template_directory_uri() ) . 'assets/js/customizer-color.js', array( 'jquery', 'customize-preview' ), tamatebako_theme_version(), true );
+}
+
+/* === EDITOR STYLE === */
+
+/* Add Editor Style */
+add_filter( 'mce_css', 'chelonian_color_mce_css' );
+
+/**
+ * Add Link Color Option in Editor Style (MCE CSS)
+ * @since 1.1.0
+ */
+function chelonian_color_mce_css( $mce_css ){
+	$mce_css .= ', ' . add_query_arg( array( 'action' => 'chelonian_color_mce_css', '_nonce' => wp_create_nonce( 'chelonian-color-mce-nonce', __FILE__ ) ), admin_url( 'admin-ajax.php' ) );
+	return $mce_css;
+}
+
+/* Ajax: editor style CSS */
+add_action( 'wp_ajax_chelonian_color_mce_css', 'chelonian_color_mce_css_ajax_callback' );
+add_action( 'wp_ajax_no_priv_chelonian_color_mce_css', 'chelonian_color_mce_css_ajax_callback' );
+
+/**
+ * Ajax Callback
+ */
+function chelonian_color_mce_css_ajax_callback(){
+
+	/* Check nonce */
+	$nonce = isset( $_REQUEST['_nonce'] ) ? $_REQUEST['_nonce'] : '';
+	if( ! wp_verify_nonce( $nonce, 'chelonian-color-mce-nonce' ) ){
+		die();
+	}
+
+	/* Get Link Color */
+	$color_primary = tamatebako_sanitize_hex_color_no_hash( get_theme_mod( 'color_primary', 'ea7521' ) );
+
+	/* Set File Type */
+	header( 'Content-type: text/css' );
+	echo "a{color:#{$color_primary}}";
+	die();
 }

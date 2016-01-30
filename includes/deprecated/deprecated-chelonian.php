@@ -10,9 +10,3 @@
 function chelonian_string( $context ){
 	return tamatebako_string( $context );
 }
-
-
-
-
-
-
