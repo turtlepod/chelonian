@@ -43,6 +43,21 @@ function hybrid_attr( $name, $context ){
 	else if( 'entry-content' == $name ){
 		echo 'class="entry-content"';
 	}
+	else if( 'comment' == $name ){
+		?>id="comment-<?php comment_ID(); ?>" <?php comment_class()?><?php
+	}
+	else if( 'comment-content' == $name ){
+		echo 'class="comment-content"';
+	}
+	else if( 'comment-author' == $name ){
+		echo 'class="comment-author vcard"';
+	}
+	else if( 'comment-published' == $name ){
+		echo 'class="comment-published"';
+	}
+	else if( 'comment-permalink' == $name ){
+		echo 'class="comment-permalink"';
+	}
 }
 
 
@@ -79,11 +94,25 @@ function hybrid_get_site_link(){
 }
 
 
+/**
+ * Comment Reply Link
+ */
+function hybrid_comment_reply_link(){
+	echo tamatebako_get_comment_reply_link();
+}
 
-
-
-
-
+/**
+ * Comment Callback
+ */
+function hybrid_comments_callback( $comment, $args, $depth ){
+	tamatebako_comments_callback( $comment, $args, $depth );
+}
+/**
+ * Comment Callback
+ */
+function hybrid_comments_end_callback(){
+	tamatebako_comments_end_callback();
+}
 
 
 
