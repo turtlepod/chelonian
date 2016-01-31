@@ -37,6 +37,8 @@ This theme is licensed under the GNU General Public License, version 2 (GPL) or 
 * Fix icon font CSS.
 * Fix Entry Content Heading CSS.
 * Fix Default Menu Item.
+* Add Child Theme example (blank) in "assets" folder.
+* Clean up js preview.
 
 = 2.0.0 - 30.Jan.2016 =
 
