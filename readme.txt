@@ -32,6 +32,11 @@ This theme is licensed under the GNU General Public License, version 2 (GPL) or 
 
 == Changelog ==
 
+= 2.0.1 - 31.Jan.2016 =
+
+* Fix icon font CSS.
+* Fix Entry Content Heading CSS.
+
 = 2.0.0 - 30.Jan.2016 =
 
 * Remove Hybrid Core
