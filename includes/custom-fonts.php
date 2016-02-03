@@ -14,7 +14,7 @@ $fonts_config = array(
 	),
 	'font_post_title' => array(
 		'label' => _x( 'Post Title Font', 'customizer', 'chelonian' ),
-		'target' => '#content .entry-title',
+		'target' => '#content .entry-title, #landing-page-title',
 		'fonts' => array( 'websafe', 'heading', 'base' ),
 		'default' => 'Open Sans',
 	),

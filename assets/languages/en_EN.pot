@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WordPress Theme\n"
 "Report-Msgid-Bugs-To: http://genbu.me/contact/\n"
-"POT-Creation-Date: 2016-01-30 22:49+0700\n"
+"POT-Creation-Date: 2016-01-31 14:17+0700\n"
 "PO-Revision-Date: 2015-09-05 12:42+0700\n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: \n"
@@ -28,22 +28,22 @@ msgctxt "customizer"
 msgid "Full Size Background"
 msgstr ""
 
-#: includes/custom-colors.php:28
+#: includes/custom-colors.php:29
 msgctxt "customizer"
 msgid "Primary Color"
 msgstr ""
 
-#: includes/custom-colors.php:46
+#: includes/custom-colors.php:48
 msgctxt "customizer"
 msgid "Hover Color"
 msgstr ""
 
-#: includes/custom-colors.php:64
+#: includes/custom-colors.php:67
 msgctxt "customizer"
 msgid "Highlight Color"
 msgstr ""
 
-#: includes/custom-colors.php:84
+#: includes/custom-colors.php:87
 msgctxt "customizer"
 msgid "Aqua Mode"
 msgstr ""
@@ -78,6 +78,26 @@ msgctxt "customizer"
 msgid "Fonts"
 msgstr ""
 
+#: includes/landing-page.php:17
+msgctxt "customizer"
+msgid "Landing Page"
+msgstr ""
+
+#: includes/landing-page.php:32
+msgctxt "customizer"
+msgid "Description"
+msgstr ""
+
+#: includes/landing-page.php:49
+msgctxt "customizer"
+msgid "Button URL"
+msgstr ""
+
+#: includes/landing-page.php:66
+msgctxt "customizer"
+msgid "Button Text"
+msgstr ""
+
 #: includes/layouts.php:9
 msgctxt "layout name"
 msgid "Content"
@@ -108,22 +128,42 @@ msgctxt "sidebar name"
 msgid "Sidebar"
 msgstr ""
 
-#: includes/setup.php:24
+#: includes/setup.php:17
+msgctxt "sidebar name"
+msgid "Landing Page Widget #1"
+msgstr ""
+
+#: includes/setup.php:18
+msgctxt "sidebar name"
+msgid "Landing Page Widget #2"
+msgstr ""
+
+#: includes/setup.php:19
+msgctxt "sidebar name"
+msgid "Landing Page Widget #3"
+msgstr ""
+
+#: includes/setup.php:27
 msgctxt "nav menu name"
 msgid "Navigation"
 msgstr ""
 
-#: includes/template-functions.php:11
+#: includes/template-functions.php:15
+msgctxt "default menu"
+msgid "Home"
+msgstr ""
+
+#: includes/template-functions.php:28
 msgctxt "read more"
 msgid "Read more&hellip;"
 msgstr ""
 
-#: includes/template-functions.php:14
+#: includes/template-functions.php:31
 msgctxt "read more"
 msgid "Comment"
 msgstr ""
 
-#: includes/template-functions.php:14
+#: includes/template-functions.php:31
 msgctxt "read more"
 msgid "Comments"
 msgstr ""
