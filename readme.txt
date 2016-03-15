@@ -2,27 +2,18 @@
 Contributors: turtlepod
 Requires at least: 4.1
 Tested up to: 4.4
-Version: 1.1.0
+Version: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: red, yellow, dark, light, responsive-layout, one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, full-width-template, sticky-post, threaded-comments, translation-ready
+Tags: black, blue, one-column, two-columns, right-sidebar, responsive-layout, custom-menu, editor-style, threaded-comments, translation-ready
 
 == Description ==
 
 Bold theme with landing page template to kick-start your project.
 
-**Features:**
-
-* Responsive Layout
-* Custom Background
-* Custom Colors
-* Custom Fonts
-* Navigation Menus
-* One Widget Area (Sidebar)
-* Something Cool
-* The GPL v2.0 or later license. :) Use it to make something cool.
-
 This theme is licensed under the GNU General Public License, version 2 (GPL) or later. All included images are also under GPL2+ licensing.
+
+For more info please visit theme page: [Chelonian WordPress Theme](http://genbumedia.com/themes/chelonian/).
 
 == Installation ==
 
@@ -31,6 +22,10 @@ This theme is licensed under the GNU General Public License, version 2 (GPL) or 
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
+
+= 2.1.0 - 15.Mar.2016 =
+
+* Comment moderation message fix (tamatebako update)
 
 = 2.0.1 - 31.Jan.2016 =
 
