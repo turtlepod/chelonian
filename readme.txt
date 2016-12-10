@@ -1,11 +1,11 @@
 === Chelonian ===
 Contributors: turtlepod
 Requires at least: 4.1
-Tested up to: 4.4
-Version: 2.1.0
+Tested up to: 4.7
+Version: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: black, blue, one-column, two-columns, right-sidebar, responsive-layout, custom-menu, editor-style, threaded-comments, translation-ready
+Tags: one-column, two-columns, right-sidebar, custom-menu, editor-style, threaded-comments, translation-ready
 
 == Description ==
 
@@ -22,6 +22,11 @@ For more info please visit theme page: [Chelonian WordPress Theme](http://genbum
 3. Click Activate to use your new theme right away.
 
 == Changelog ==
+
+= 2.2.0 - 15.Mar.2016 =
+
+* Custom CSS WP 4.7 Compat.
+* Remove mobile view (no longer needed)
 
 = 2.1.0 - 15.Mar.2016 =
 
